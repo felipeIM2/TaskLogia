@@ -1,0 +1,54 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lexend:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+.modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+ 
+}
+
+.modal-conteudo {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #888;
+  width: 500px;
+  height: 400px;
+  border: 0;
+
+}
+
+.tableContainer {
+  border-radius: 20px;
+  height: 500px;
+  color: #343440;
+  font-size: 20px;
+}
+
+.tableContainer td {
+  font-family: "Lexend", sans-serif;  
+}
+
+#closeModalInfoCompanie {
+  display: flex;
+  border:none;
+  font-size: 20px;
+  background-color: transparent;
+  width: 40px;
+  
+}
+
+
+#closeModalInfoCompanie:hover {
+  color: rgb(4,193,231,1);
+}
+
+
+.direction {
+  margin-right: 32%;
+}
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./stock.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="screen ">
+    <div class="left_side">
+      <div class="sidebar-container">
+        <div class="sidebar-logo">
+          <img src="../../../images/TaskLogia_logo_redimensionada.png" alt="" srcset="">
+        </div>
+        <ul>
+          <li class="cool-link"><a href="../homePage/homePage.html">Ordens</a></li>
+          <li class="cool-link"><a href="#">Sobre a TaskLogia</a></li>
+          <li id="testeabrirmodal" class="cool-link"><a href="#">Contate-nos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="right_side">
+      <div class="form-container">
+
+        
+        <h1>ESTOQUE</h1>
+        <div class="form-content">
+          <input type="search" class="searchBar" name="searchBar" placeholder="Buscar..." autocomplete="off">
+          
+            <table>
+             
+              <thead>
+                <tr class="title">
+                  <th>ID Item</th>
+                  <th>Quantidade</th>
+                  <th>Nome Item</th>
+                  <th>Descrição</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+              </tbody>
+            </table>
+          
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script type="module" src="./stock.js"></script>
+
+</html>

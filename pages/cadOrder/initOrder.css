@@ -1,0 +1,384 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma;
+    outline: none;
+}
+:root{
+    --default-color:#343440;
+    --selection-color:#2F2F39;
+    --selection-color-2: #1b1b20;
+    --neutral-color:#f6f6f9;
+    --neutral-color-2:#eaeaeb;
+    --ciano-color:#55EBFF;
+}
+
+
+.screen{
+    background-color: aquamarine;
+    display: flex;
+    height: fit-content; /*ajusta a página sem associar com a resolção do monitor*/
+}
+
+.left_side{
+    background-color: cadetblue;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar-logo{
+    background-color: hidden;
+    width: 100%;
+    /*height: 100px;*/
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /*  border-bottom: groove 2px var(--selection-color-2); */
+}
+.sidebar-logo img{
+    width: 80%;
+}
+
+/*---------------------------------------------*/
+.sidebar-container {
+    width: 300px;
+    height: 100%;
+    background-color: var(--default-color);
+    color: #fff;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    border-right: groove 2px var(--selection-color-2);
+    /* box-shadow: 10px 0 7px 0px #00000063; */
+  }
+  
+  .sidebar-container ul {
+    list-style: none;
+    padding: 0;
+   /*  margin: 5px 0; */
+  }
+  
+  .sidebar-container a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    transition: .5s ease;
+    border-bottom: groove 1px var(--selection-color-2);
+  }
+  
+  .sidebar-container a:hover {
+    background-color: var(--selection-color-2);
+  }
+  
+  /* Estilos do dropdown */
+  .dropdown-content {
+    display: none;
+    background-color: var(--selection-color);
+    padding-left: 20px;
+    animation: ease-in-out;
+    transition: .8s ease;
+  }
+  
+.drop-relatorio{
+  width: 100%;
+}
+
+  nav {
+    background-color: var(--default-color);
+    color: #fff;
+    text-decoration: none;
+  /*   width: 100%; */
+    transition: .5s ease;
+    border-bottom: groove 1px var(--selection-color-2);
+    /* height: 50px; */
+  }
+
+
+
+.cool-link{
+  padding: 0;
+}
+
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--ciano-color);
+    transition: width .4s;
+}
+
+.cool-link:hover::after {
+    width: 100%;
+    transition: width .4s;
+}
+
+
+  /*----------------------------------------*/
+
+
+.right_side{
+    background-color: var(--default-color);
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container{
+    background-color: var(--default-color);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-content{
+    background-color: var(--neutral-color-2);
+    width: 900px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 5px;
+}
+
+.form-left{
+    background-color: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    
+}
+
+
+
+.title-form-left{
+  background-color: #34344042;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  font-weight: 600;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------- */
+.cadOrder {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.cadOrder #text, input {
+  text-align: center;
+  padding: 10px;
+  height: 40px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.textLabel {
+  margin-top: 20px;
+}
+
+#textArea {
+  background-color: var(--neutral-color);
+  border-radius: 5px;
+  resize: none; /* Impede que o usuário redimensione o textarea */
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(52,52,64);
+  color: white;
+  font-size: 15px;
+  width: 300px;
+  height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+#nameClient {margin-bottom: 15px;}
+
+
+.register {
+  background-color: rgb(52,52,64);
+  color: white;
+  width: 200px;
+  height: 35px;
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+.form-left input {
+  color: white;
+  background-color: rgb(52,52,64);
+  width: 250px;
+  border: none;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+/* Contêiner principal para aplicar o layout flex */
+.cadFormat {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  gap: 20px;
+}
+
+
+.secTabs {
+  display: flex;
+  height: 300px;
+  
+}
+
+
+/* Definindo a largura e o fundo da lista à esquerda */
+.leftListSec {
+  
+  width: 400px;            /* Largura fixa, pode ser ajustada */
+  max-height: 345px;     /* Altura máxima com rolagem */
+  overflow-y: auto;      /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+}
+
+.rightListSec {
+  
+  width: 400px;            /* Largura fixa, pode ser ajustada */
+  max-height: 345px;     /* Altura máxima com rolagem */
+  overflow-y: auto;      /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+}
+
+.leftListSec p {
+  text-align: center;
+}
+
+/* Estilo das células da tabela (td) */
+.line td {
+  display: flex;              /* Torna o conteúdo dentro da td um contêiner flexível */
+  justify-content: center;    /* Alinha os elementos horizontalmente ao centro */
+  align-items: center;        /* Alinha os elementos verticalmente ao centro */
+  width: 300px;               /* Largura fixa da célula */
+  padding: 4px;               /* Espaçamento interno para a célula */
+  border: 1px solid #ddd;     /* Borda para a célula */
+  margin: 4px;                /* Margem externa (se necessário, pode ser ajustada) */
+  border: none;
+  gap: 10px;
+}
+
+
+.itemsInfo {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.addProuctList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.addProuctList select {
+  width: 120px;
+  border: none;
+  font-size: 15px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: transparent;
+}
+select option{ position:absolute; top:50px; left:0;}
+
+label {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.infoStock {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.productListAdd button {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+#quantity {
+  
+  width: 140px;
+  height: 24px;
+  font-size: 18px;
+  padding: 5px;
+
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#cleanList {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+}
+
+
+table {
+ width: 100%;
+}
+
+#table {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+#cleanList {
+  border: none;
+  margin-bottom: 10px;
+  background-color: transparent;
+}

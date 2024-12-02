@@ -1,0 +1,40 @@
+@media (min-width: 900px){
+    .loginout-container {
+        margin-top: 30px;
+    }
+
+    .section-dashboard{
+        background-color:var(--selection-color);
+        height: 600px;
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        gap: 5px;
+        
+    }
+    .nav-container{
+        margin-left: 250px ;
+    }
+  }
+
+
+
+
+  /*responsividade para 1920 x 1080*/
+  @media (min-width: 1920px) or (min-height: 963){
+
+    .section-dashboard{
+        background-color:var(--selection-color);
+        height: 800px;
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        gap: 5px;
+        
+    }
+
+  }

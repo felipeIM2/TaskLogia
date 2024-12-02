@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskLogia</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+  <div class="section">
+    <div class="container">
+      <div class="containerImage">
+        <img src="../images/TaskLogia_logo.png" alt="img-logo">
+      </div>
+      <div class="boxLogin">
+        <form class="containerLogin">
+          <input type="text" placeholder="Usuário" id="user" autocomplete="off">
+          <input type="password" placeholder="Senha" id="password" autocomplete="off">
+           <button  id="login">Logar</button>
+        </form>
+        <div class="containerRegister"> 
+          <button id="register">Cadastrar</button>
+          <div class="recoverPass">
+            <a href="./pages/recoverypass/recoverypass.html"><p>Recuperar Senha</p></a>
+          </div>
+        </div>
+      </div>
+      <div class="modalRegisterOff" id="modalRegister">
+        <h1>Deseja Cadastrar:</h1>
+        <button id="newEmplo">Novo Funcionário</button>
+        <button id="newAdmin">Novo Administrador</button>
+        <button id="cancelRegister">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+ <script type="module" src="./login.js"></script>
+</html>

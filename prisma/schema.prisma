@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Access {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  userID     Int
+  idcompanies Int
+  user       String
+  password   String
+}
+
+model Company {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  idcompanies       Int   
+  razaoSocial       String
+  nomeFantasia      String
+  cnpj              String
+  endereco          String
+  inscricaoEstadual String
+  contato           Json 
+}
+
+model ItemOrder {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  idproduct   Int
+  idcompanies Int
+  numberorder Int
+  amountorder Int
+  amountstock Int
+  nameitem    String
+  unitycost   Int
+}
+
+model Order {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  idemployee  Int
+  idstatus    Int
+  idcompanies Int
+  name        String
+  numberorder Int
+  descript    String
+  ordercost   Int
+  closeorderdetail String?
+}
+
+model OrderStatus {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  idstatus Int   
+  status   String
+}
+
+model Stock {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  idcompanies Int
+  idproduct   Int
+  amount      Int
+  nameitem    String
+  itemdescript String
+  unitycost   Int
+}
+

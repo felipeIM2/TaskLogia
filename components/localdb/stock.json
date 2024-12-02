@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "idcompanies": 1,
+    "idproduct": 501,
+    "amount": 10000,
+    "nameitem": "Produto A",
+    "itemdescript": "Produto eletrônico de última geração",
+    "unitycost": 900
+  },
+  {
+    "id": 2,
+    "idcompanies": 1,
+    "idproduct": 502,
+    "amount": 5,
+    "nameitem": "Produto B",
+    "itemdescript": "Produto para casa inteligente",
+    "unitycost": 2
+  },
+  {
+    "id": 3,
+    "idcompanies": 1,
+    "idproduct": 503,
+    "amount": 900,
+    "nameitem": "Produto C",
+    "itemdescript": "Acessório para smartphone",
+    "unitycost": 90
+  },
+  {
+    "id": 4,
+    "idcompanies": 1,
+    "idproduct": 504,
+    "amount": 300,
+    "nameitem": "Produto D",
+    "itemdescript": "Fone de ouvido sem fio",
+    "unitycost": 30
+  },
+  {
+    "id": 5,
+    "idcompanies": 1,
+    "idproduct": 505,
+    "amount": 50,
+    "nameitem": "Produto E",
+    "itemdescript": "Cabo de carregamento rápido",
+    "unitycost": 50
+  },
+  {
+    "id": 6,
+    "idcompanies": 1,
+    "idproduct": 601,
+    "amount": 100,
+    "nameitem": "Produto F",
+    "itemdescript": "Câmera de segurança para ambientes internos",
+    "unitycost": 20
+  },
+  {
+    "id": 7,
+    "idcompanies": 1,
+    "idproduct": 602,
+    "amount": 250,
+    "nameitem": "Produto G",
+    "itemdescript": "Sistema de alarme sem fio",
+    "unitycost": 220
+  },
+  {
+    "id": 8,
+    "idcompanies": 1,
+    "idproduct": 603,
+    "amount": 400,
+    "nameitem": "Produto H",
+    "itemdescript": "Monitor de segurança com visão noturna",
+    "unitycost": 78
+  },
+  {
+    "id": 9,
+    "idcompanies": 1,
+    "idproduct": 604,
+    "amount": 180,
+    "nameitem": "Produto I",
+    "itemdescript": "Sensor de movimento para alarmes",
+    "unitycost": 38
+  },
+  {
+    "id": 10,
+    "idcompanies": 1,
+    "idproduct": 605,
+    "amount": 80,
+    "nameitem": "Produto J",
+    "itemdescript": "Controle remoto para câmeras de segurança",
+    "unitycost": 14
+  }
+]

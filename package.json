@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "@prisma/client": "^6.0.0",
+    "axios": "^1.7.8",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.3"
+  },
+  "name": "tasklogia",
+  "description": "",
+  "version": "1.0.0",
+  "main": "landPage.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon apiOrder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeIM2/TaskLogia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipeIM2/TaskLogia/issues"
+  },
+  "homepage": "https://github.com/felipeIM2/TaskLogia#readme",
+  "devDependencies": {
+    "prisma": "^6.0.0"
+  }
+}

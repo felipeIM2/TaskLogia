@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "userID": 1522,
+    "idcompanies": 1,
+    "user": "admin",
+    "password": "admin"
+  },
+  {
+    "id": 4,
+    "userID": 2204,
+    "idcompanies": 1,
+    "user": "luis",
+    "password": "luis"
+  },
+  {
+    "id": 2,
+    "userID": 1010,
+    "idcompanies": 2,
+    "user": "admin2",
+    "password": "admin2"
+  },
+  {
+    "id": 3,
+    "userID": 3052,
+    "idcompanies": 3,
+    "user": "admin3",
+    "password": "admin3"
+  }
+]
+

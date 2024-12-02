@@ -1,0 +1,36 @@
+[
+  {
+    "idcompanies": 1,
+    "razaoSocial": "Empresa Alpha Ltda",
+    "nomeFantasia": "Alpha Soluções",
+    "cnpj": "12.345.678/0001-90",
+    "endereco": "Rua Principal, 123 - Centro, São Paulo, SP",
+    "inscricaoEstadual": "123.456.789.123",
+    "contato": {
+      "email": "contato@alphasolucoes.com"
+    }
+  },
+  {
+    "idcompanies": 2,
+    "razaoSocial": "Beta Comércio e Serviços S.A.",
+    "nomeFantasia": "Beta Comercial",
+    "cnpj": "98.765.432/0001-21",
+    "endereco": "Av. Central, 456 - Jardim das Nações, Belo Horizonte, MG",
+    "inscricaoEstadual": "654.321.987.654",
+    "contato": {
+      "email": "contato@betacomercial.com.br"
+    }
+  },
+  {
+    "idcompanies": 3,
+    "razaoSocial": "Gama Construções ME",
+    "nomeFantasia": "Gama Engenharia",
+    "cnpj": "33.222.111/0001-55",
+    "endereco": "Rua do Trabalho, 789 - Parque Industrial, Curitiba, PR",
+    "inscricaoEstadual": "789.123.456.321",
+    "contato": {
+      "email": "contato@gamaengenharia.com"
+    }
+  }
+]
+

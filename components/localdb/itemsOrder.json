@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "idproduct": 501,
+    "idcompanies": 1,
+    "numberorder": 1001,
+    "amountorder": 23,
+    "amountstock": 10000,
+    "nameitem": "Produto A",
+    "unitycost": 900
+  },
+  {
+    "id": 1,
+    "idproduct": 501,
+    "idcompanies": 1,
+    "numberorder": 1002,
+    "amountorder": 25,
+    "amountstock": 10000,
+    "nameitem": "Produto A",
+    "unitycost": 900
+  },
+  {
+    "id": 1,
+    "idproduct": 501,
+    "idcompanies": 1,
+    "numberorder": 1002,
+    "amountorder": 55,
+    "amountstock": 10000,
+    "nameitem": "Produto A",
+    "unitycost": 900
+  },
+  {
+    "id": 10,
+    "idproduct": 605,
+    "idcompanies": 1,
+    "numberorder": 1002,
+    "amountorder": 20,
+    "amountstock": 80,
+    "nameitem": "Produto J",
+    "unitycost": 14
+  }
+]

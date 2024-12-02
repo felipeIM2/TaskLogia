@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma;
+    text-decoration: none;
+}
+:root{
+    --default-color:#343440;
+    --selection-color:#2F2F39;
+    --selection-color-2: #1b1b20;
+    --neutral-color:#f6f6f9;
+    --neutral-color-2:#f1f1f1;
+    --ciano-color:#46d1e4;
+    --dark-purple-color:#007;
+    --defaut-blue-selection:#007bff;
+}
+
+/*MODAL OCULTO*/
+#fade{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 5; /*tem a função de subir ou descer itens em camadas na tela*/
+  }
+  
+  #modal{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /*TEM A FUNÇÃO DE CENTRALIZAR UMA DIV COMO UM MODAL, PARA SER NECESSARIO O FUNCIONAMENTO É NECESSÁRIO QUE SEJA FEITA (TOP:50% e left 50%)*/
+    background-color: var(--selection-color);
+    z-index: 10; /*tem a função de subir ou descer itens em camadas na tela*/
+    width: 400px;
+    height: 250px;
+    max-width: 90%;
+    padding: 5px;
+    border-radius: 0.5rem;
+    
+  }
+  
+  .title-container{
+    background-color: var(--selection-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin-bottom: 10px;  */
+    border-bottom: 1px groove rgb(255, 0, 0);
+    color: white;
+  }
+  
+  
+  .modal-body{
+    background-color:var(--selection-color); 
+    display: block-inline;
+    height: 50%;
+    padding: 2px;
+  }
+  
+  .paragrafo{
+    background-color: var(--selection-color); 
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .btn-fechar{
+    background-color: hidden; 
+    display: flex;
+    height: 80px;
+    justify-content: flex-end;
+    align-items:flex-end;
+    /* padding: 5px; */
+  }
+  
+  button{
+    padding: .6rem 1.2rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 1rem;
+    transition: 0.3s;
+    outline: none;
+  }
+  button:hover{
+    opacity: 1;
+  }
+  
+  /* #modal.hide,
+  #fade.hide{
+    opacity: ;
+  } */
+  
+
+
+.modal-body{
+/*     background-color: #007bff; */
+    display: block-inline;
+    height: 130px;
+}
+
+.paragrafo{
+    /* background-color: yellow; */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.btn-fechar{
+    /* background-color: green; */
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+}
+
+button{
+    padding: .6rem 1.2rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 1rem;
+    transition: 0.4s;
+}
+button:hover{
+    opacity: 1;
+}
+
+/* #modal.hide,
+#fade.hide{
+    opacity: ;
+} */
