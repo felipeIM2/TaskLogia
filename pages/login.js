@@ -8,7 +8,7 @@
     })
     .then(dataAccess => {
        
-      console.log(dataAccess)
+     // console.log(dataAccess)
       initLogin(dataAccess)
 
     })
@@ -49,7 +49,7 @@ const login = document.getElementById("login");
     
 
      let confirmUser = dataAccess.find((v) => v.user === user && v.password === pass);
-
+        
     if(confirmUser != undefined) {
       sessionStorage.setItem("user", JSON.stringify(confirmUser))
        window.location = './homePage/homePage.html'

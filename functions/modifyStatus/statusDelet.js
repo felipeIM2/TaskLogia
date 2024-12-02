@@ -1,4 +1,4 @@
-import setdata from '../../functions/removeOrderdb.js'
+import setdata from "../../middlewares/removeOrderdb.js"
 
 const secretKey = "12345678901";
 

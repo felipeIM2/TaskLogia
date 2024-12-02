@@ -1,7 +1,7 @@
  
  import addItemList from '../../functions/itemsList/addItemList.js';
  import showItemList from '../../functions/itemsList/showItemList.js';
- import setNullItems from '../../middlewares/setNewItemOrder.js'
+ import cleanAllItems from '../../middlewares/removeItemsAll.js'
  import setData from '../../middlewares/setNewOrderdb.js';
  
   let getUser = JSON.parse(sessionStorage.getItem("user"));
@@ -92,36 +92,6 @@
           location.reload()
         }, 400)
 
-
-    // let bytesItems = CryptoJS.AES.decrypt(encryptedOrder, secretKey);
-    // let neWdataDecrypt = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
-    
-    // neWdataDecrypt.push(transform); 
-    // let encryptOrderNew = CryptoJS.AES.encrypt(JSON.stringify(neWdataDecrypt), secretKey).toString();
-    // localStorage.setItem("order", encryptOrderNew);
-      // setTimeout(() => {
-
-      //     let newDocumentItems = localStorage.getItem("order");
-      //     let bytes = CryptoJS.AES.decrypt(newDocumentItems, secretKey);
-      //     let neWdatadb = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-      //     console.log("Saved in local!");
-          
-      //     textArea.scrollTop = 0;
-
-      //     let encryptedOrder = localStorage.getItem('order');
-      //     let bytesItems = CryptoJS.AES.decrypt(encryptedOrder, secretKey);
-      //     let dataOrderLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
-      //  //   console.log(dataOrderLocal)
-      //     let orderCompanie = dataOrderLocal.filter((v) => v.idcompanies === getUser.idcompanies);
-      //     let numberOrder = orderCompanie.map((v) => v.numberorder);
-      //     let lastOrder = (numberOrder[numberOrder.length - 1] === 0 || !numberOrder[numberOrder.length - 1]) ? 1001 : (numberOrder[numberOrder.length - 1] || 0) + 1;
-      //     sessionStorage.setItem("lastOrder", lastOrder)
-      //     //setdata(transform)
-
-  
-          
-      // }, "800");
    });
   }
 
@@ -199,30 +169,54 @@
 
 
 
-  let encryptedItems = sessionStorage.getItem("itemsOrder");
-  let bytesItems = CryptoJS.AES.decrypt(encryptedItems, secretKey);
-  let dataItemsLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
-  let itemsOrderCompanie = dataItemsLocal.filter((v) => v.idcompanies === getUser.idcompanies);
-  let list = document.getElementById("table")
+  fetch('http://localhost:3000/itemsOrder')
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Rede falhou: ' + res.status);
+    }
+    return res.json();
+  })
+  .then(dataItemsOrder => {
 
-  showItemList(itemsOrderCompanie, list, getUser)
+
+    let itemsOrderCompanie = dataItemsOrder.filter((v) => v.idcompanies === getUser.idcompanies);
+    //console.log(itemsOrderCompanie)
+    let list = document.getElementById("table")
+    showItemList(itemsOrderCompanie, list, getUser)
+
+  })
+  .catch(error => {
+    console.error('Erro ao carregar o JSON:', error);
+  });
 
 
-  document.getElementById("cleanList").addEventListener("click", () => {
+
+
+  document.getElementById("cleanList").addEventListener("click", (itemsOrderCompanie) => {
     
-    
+   
+
     let lastOrder = Number(sessionStorage.getItem("lastOrder"));
-    dataItemsLocal = dataItemsLocal.filter(v => v.numberorder !== lastOrder);
-    sessionStorage.setItem('itemsOrder', CryptoJS.AES.encrypt(JSON.stringify(dataItemsLocal), secretKey).toString());
 
-      setTimeout(() => {
+    let deletAllItem = 
+      {
+        idcompanies:getUser.idcompanies, 
+        lastorder:lastOrder
+      }
+    
 
-        let newDocumentItems = sessionStorage.getItem("itemsOrder");
-        let bytes = CryptoJS.AES.decrypt(newDocumentItems, secretKey);
-        let newDatadb = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        setNullItems(newDatadb)
+    
 
-    }, 100);
+    let deletItems = confirm("Voce deseja limpar a lista de itens?")
+   
+    if(deletItems === true){
+     
+      cleanAllItems(deletAllItem)
+      location.reload()
+    }else {
+      console.log("Exclusão cancelada")
+    }
+
 
   });
 

@@ -1,4 +1,4 @@
-import setNullItems from '../../functions/itemsList/setNewItemOrder.js'
+//import setNullItems from '../../functions/itemsList/setNewItemOrder.js'
 
 const secretKey = "12345678901";
 

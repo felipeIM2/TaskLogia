@@ -1,31 +1,19 @@
 
-import setdata from '../../middlewares/setNewItemOrder.js'
+import removeItem from '../../middlewares/removeItem.js'
 
-const secretKey = "12345678901";
 
 function showItemList(itemsOrderCompanie, list, getUser) {
 
-  let encryptedOrder = sessionStorage.getItem('order');
-  let bytes = CryptoJS.AES.decrypt(encryptedOrder, secretKey);
-  let dataItemsLocal = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  let lastOrder = Number(sessionStorage.getItem("lastOrder"));
 
-  let itemsCompanie = dataItemsLocal.filter((v) => v.idcompanies === getUser.idcompanies);
-  
-  let numberOrder = itemsCompanie.map((v) => v.numberorder);
-
-   let lastOrder = Number(sessionStorage.getItem("lastOrder"))
-  //  let lastOrder = (numberOrder[numberOrder.length - 1] === 0 || !numberOrder[numberOrder.length - 1]) ? 1001 : (numberOrder[numberOrder.length - 1] || 0) + 1;
-    //sessionStorage.getItem("lastOrder", lastOrder)
-   
   if (!itemsOrderCompanie || itemsOrderCompanie.length === 0) return;
-  //console.log(lastOrder)
+
   let filteredItems = itemsOrderCompanie.filter(v => v.numberorder === lastOrder);
-      //console.log(filteredItems)
   if (filteredItems.length === 0) return;
 
   let totalCost = 0;
 
-  // Limpa a lista antes de adicionar novamente os itens
+ 
   list.innerHTML = '';
 
   filteredItems.forEach(item => {
@@ -38,9 +26,11 @@ function showItemList(itemsOrderCompanie, list, getUser) {
     let p2 = document.createElement("p");
     let p3 = document.createElement("p");
     let button = document.createElement("button");
-    //button.style.width = "40px";
+    let i = document.createElement("i");
+
     button.style.cssText = "width: 40px; background-color: transparent; border:none; font-size:14px;";
-    button.innerText = "DEL"; 
+    i.classList = "fa-regular fa-trash-can"
+    button.style.cursor = "pointer";
 
     let itemCost = item.amountorder * item.unitycost;
 
@@ -48,6 +38,7 @@ function showItemList(itemsOrderCompanie, list, getUser) {
     p2.innerText = `QT: ${item.amountorder}`;
     p3.innerText = `VL: ${itemCost.toFixed(2)}`;
 
+    button.appendChild(i)
     td.appendChild(button);
     td.appendChild(p1);
     td.appendChild(p2);
@@ -58,31 +49,24 @@ function showItemList(itemsOrderCompanie, list, getUser) {
 
     totalCost += itemCost;
 
-    // Adicionando o evento de deletar o item
-    button.addEventListener("click", () => {
-      // Remover o item da lista 'filteredItems' com base no id do item
-      const index = filteredItems.findIndex(v => v.id === item.id);
-      if (index !== -1) {
-        // Remove o item da lista 'filteredItems'
-        filteredItems.splice(index, 1);
+    i.setAttribute("data-id", item.id);
+    i.setAttribute("data-amountorder", item.amountorder);
+    i.setAttribute("data-number", item.numberorder); 
+    
+    button.addEventListener("click", (event) => {
 
-        // Atualizando os itens no sessionStorage
-        let encryptedItems = sessionStorage.getItem('itemsOrder');
-        let bytes = CryptoJS.AES.decrypt(encryptedItems, secretKey);
-        let dataItemsOrder = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      const itemId = event.target.getAttribute("data-id");
+      const itemAmount = event.target.getAttribute("data-amountorder");
+      const itemNumber = event.target.getAttribute("data-number");
+
+      let item = {iditem: itemId, amountorder: itemAmount, numberorder:itemNumber }
         
-        // Remover o item de 'dataItemsOrder'
-        const itemIndex = dataItemsOrder.findIndex(v => v.id === item.id);
-        if (itemIndex !== -1) {
-          dataItemsOrder.splice(itemIndex, 1); // Remove o item pelo id
-        }
+       removeItem(item)
 
-        // Atualizando sessionStorage com a lista modificada
-        sessionStorage.setItem('itemsOrder', CryptoJS.AES.encrypt(JSON.stringify(dataItemsOrder), secretKey).toString());
-        
+        setTimeout(() => {
+          location.reload()
+        }, 800);
 
-
-      }
     });
   });
 

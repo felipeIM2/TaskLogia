@@ -1,5 +1,5 @@
   
-  import orderStatus from '../../components/localdb/orderstatus.js';
+
   import statusInit from '../../functions/modifyStatus/statusInit.js';
   import statusClose from '../../functions/modifyStatus/statusClose.js';
   import showDataCompanie from '../../functions/showDataCompanie.js'
@@ -9,12 +9,29 @@
   import statusDelet from '../../functions/modifyStatus/statusDelet.js';
   import statusEdit from '../../functions/modifyStatus/statusEdit.js'
   import updatePagination from '../../functions/pagination.js';
-  //import cleanOrder from '../../functions/cleanItemsOrder.js';
   import apiGet from '../../api/apiGet.js';
 
   const secretKey = "12345678901";
 
 
+  fetch('http://localhost:3000/orderStatus')
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Rede falhou: ' + res.status);
+    }
+    return res.json();
+  })
+  .then(dataOrderStatus => {
+     
+    let status = JSON.stringify(dataOrderStatus)
+    localStorage.setItem("orderStatus", status)
+    
+  })
+  .catch(error => {
+    console.error('Erro ao carregar o JSON:', error);
+  });
+
+  
   let currentPage = 1;
   let itemsPerPage = 0;       
   let totalItems = 0;           
@@ -145,6 +162,7 @@
 
 
   function getItemsOrder() {
+   
     let phase = sessionStorage.getItem("i");
 
     if(phase === "2") { return; }
@@ -197,29 +215,33 @@
         order.orderCost = (order.orderCost || 0) + totalCosts[orderNumber]; // Update orderCost directly
       }
     });
-
+  
+    
     // After updating the costs, re-render the page to show the updated values
     displayPage(currentPage, getUser);
   }
 
 
-  function displayPage(page, getUser) {
- 
-   
+  function displayPage( page, getUser) {
 
+    let status = JSON.parse(localStorage.getItem("orderStatus"))
+    
+   
     const tableBody = document.getElementById("localTable");
     tableBody.innerHTML = '';  
 
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
 
-    
+        
     for (let i = startIndex; i < endIndex; i++) {
       const order = newWords[i];
-  
-      const statusName = orderStatus.filter((v) => v.idstatus === order.idstatus);
-      //console.log(statusName)
+   
+    
+      const statusName = status.filter((v) => v.idstatus === order.idstatus);
+
       const row = document.createElement("tr");
+
       row.addEventListener("mouseenter", () => { row.style.backgroundColor = "#e6e6e6" });
       row.addEventListener("mouseleave", () => { row.style.backgroundColor = "#f6f6f9" });
 

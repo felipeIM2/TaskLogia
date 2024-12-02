@@ -60,6 +60,7 @@ app.use(express.json());
           id: data.id, 
         }
       });
+      // console.log(data.id)
       console.log(`Ordem e itens removidos com sucesso: ${JSON.stringify(order)}`);
       return res.json({ mensagem: "Ordem e itens removidos com sucesso!", order });
     } catch (err) {
@@ -68,6 +69,47 @@ app.use(express.json());
     }
   });
 
+
+  app.post("/removeItemsAll", async (req, res) => {
+    const data = req.body;
+  
+    try {
+     
+      await prisma.itemOrder.deleteMany({
+        where: {
+          idcompanies: data.idcompanies,
+          numberorder: data.lastorder  
+        }
+  
+      });
+
+
+      return res.json({ mensagem: "Ordem e itens removidos com sucesso!", order });
+    } catch (err) {
+      console.error('Erro ao remover ordem e itens no banco:', err);
+      return res.status(500).json({ mensagem: "Erro ao remover a ordem e os itens." });
+    }
+  });
+
+
+  app.post("/removeItem", async (req, res) => {
+    const data = req.body;
+  
+    try {
+     
+      await prisma.itemOrder.delete({
+        where: {
+          id: data.iditem,
+          amountorder: data.itemAmount,
+          numberorder: data.itemNumber
+        }
+      });
+      console.log(data)
+      return res.json({ mensagem: "Ordem e itens removidos com sucesso!", order });
+    } catch (err) {
+      return res.status(500).json({ mensagem: "Erro ao remover a ordem e os itens." });
+    }
+  });
 
 
   app.post("/reciveNewOrder", async (req, res) => {
@@ -177,6 +219,16 @@ app.use(express.json());
     try {
       const access = await prisma.access.findMany();
       return res.json(access);
+    } catch (err) {
+      console.error('Erro ao buscar pedidos:', err);
+      return res.status(500).json({ mensagem: "Erro ao buscar pedidos." });
+    }
+  });
+
+  app.get("/orderStatus", async (req, res) => {
+    try {
+      const orderStatus = await prisma.orderStatus.findMany();
+      return res.json(orderStatus);
     } catch (err) {
       console.error('Erro ao buscar pedidos:', err);
       return res.status(500).json({ mensagem: "Erro ao buscar pedidos." });

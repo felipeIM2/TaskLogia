@@ -3,7 +3,7 @@ import setdata from '../../middlewares/setNewItemOrder.js'
 
 function addItemList(itemSelected, quantity, numberOrder) {
 
- const secretKey = "12345678901"
+
   let item = JSON.parse(itemSelected)
 
     
@@ -20,12 +20,13 @@ function addItemList(itemSelected, quantity, numberOrder) {
           "unitycost": item.unitycost
         };
           // console.log(transform)
-          
-          setTimeout(() => {
-            setdata(transform)
-             
-          }, 200);
+         
+        setdata(transform)
 
+        setTimeout(() => {
+          location.reload()
+        }, 600);
+               
   }
       start()
 }
