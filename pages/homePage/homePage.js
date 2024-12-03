@@ -195,9 +195,10 @@
     numberOrder.forEach(orderNumber => {
       // Filter items for the current order number
       let filteredItems = itemsOrderCompanie.filter(v => v.numberorder === orderNumber);
-      
+     // console.log(itemsOrderCompanie)
       // Sum up the cost for the filtered items
       let totalCost = filteredItems.reduce((sum, item) => {
+          
         return sum + (item.amountorder * item.unitycost);
       }, 0);
       
@@ -214,6 +215,7 @@
         sessionStorage.setItem("i", 2);
         order.orderCost = (order.orderCost || 0) + totalCosts[orderNumber]; // Update orderCost directly
       }
+      //console.log(totalCosts)
     });
   
     
@@ -362,7 +364,7 @@
       let checkState = 1
       if (checkState === 1) {  
        
-        setTimeout(() => { getItemsOrder() }, 500)
+        setTimeout(() => { getItemsOrder() }, 600)
        
 
       }
