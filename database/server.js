@@ -150,25 +150,29 @@ app.use(express.json());
   });
 
 
-  // app.post("/reciveStock", async (req, res) => {
-  //   const data = req.body;
-  //   try {
-  //     const stock = await prisma.stock.create({
-  //       data: {
-  //         idcompanies: data.idcompanies,
-  //         idproduct: data.idproduct,
-  //         amount: data.amount,
-  //         nameitem: data.nameitem,
-  //         itemdescript: data.itemdescript,
-  //         unitycost: data.unitycost,
-  //       },
-  //     });
-  //     return res.json({ mensagem: "Dados recebidos e salvos com sucesso!", stock });
-  //   } catch (err) {
-  //     console.error('Erro ao salvar no banco:', err);
-  //     return res.status(500).json({ mensagem: "Erro ao salvar os dados." });
-  //   }
-  // });
+  app.post("/reciveStock", async (req, res) => {
+    const data = req.body;
+    try {
+      const stock = await prisma.stock.update({
+         where: {
+           id:data.id
+         },
+        data: {
+          idcompanies: data.idcompanies,
+          idproduct: data.idproduct,
+          amount: data.amount,
+          nameitem: data.nameitem,
+          itemdescript: data.itemdescript,
+          unitycost: data.unitycost,
+        },
+      });
+      console.log(data)
+      return res.json({ mensagem: "Dados recebidos e salvos com sucesso!", stock });
+    } catch (err) {
+      console.error('Erro ao salvar no banco:', err);
+      return res.status(500).json({ mensagem: "Erro ao salvar os dados." });
+    }
+  });
 
 
 // ----------------------------------------------GET DATABASE------------------------------------------------------

@@ -88,8 +88,10 @@
           sessionStorage.removeItem("orderCost");
           sessionStorage.removeItem("textArea");
           document.getElementById("quantity").value = ''
-          alert("Sua ordem foi gravada!")
-          location.reload()
+          let numberOrder = Number(sessionStorage.getItem("lastOrder"))
+           sessionStorage.setItem("lastOrder", numberOrder + 1)
+         alert("Sua ordem foi gravada!")
+         location.reload()
         }, 400)
 
    });

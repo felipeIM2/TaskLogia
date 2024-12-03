@@ -19,12 +19,12 @@ function addItemList(itemSelected, quantity, numberOrder) {
           "nameitem": item.nameitem,
           "unitycost": item.unitycost
         };
-          // console.log(transform)
+          console.log(transform)
          
-        setdata(transform)
+       // setdata(transform)
 
         setTimeout(() => {
-          location.reload()
+        // location.reload()
         }, 600);
                
   }

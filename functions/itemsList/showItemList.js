@@ -5,7 +5,6 @@ import removeItem from '../../middlewares/removeItem.js'
 function showItemList(itemsOrderCompanie, list, getUser) {
 
   let lastOrder = Number(sessionStorage.getItem("lastOrder"));
-
   if (!itemsOrderCompanie || itemsOrderCompanie.length === 0) return;
 
   let filteredItems = itemsOrderCompanie.filter(v => v.numberorder === lastOrder);
