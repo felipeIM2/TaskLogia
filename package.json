@@ -13,7 +13,8 @@
   "main": "landPage.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon apiOrder.js"
+    "start": "nodemon apiOrder.js",
+    "build": "prisma generate && next build"
   },
   "repository": {
     "type": "git",
