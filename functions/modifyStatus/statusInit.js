@@ -23,7 +23,7 @@ function statusInit(newWords, getUser){
         "ordercost":newWords.orderCost
     };
 
-     
+    // console.log(transform)
     setData(transform)
     location.reload()
 

@@ -40,7 +40,7 @@ model ItemOrder {
   amountorder Int
   amountstock Int
   nameitem    String
-  unitycost   Int
+  unitycost   Float
 }
 
 model Order {
@@ -51,7 +51,7 @@ model Order {
   name        String
   numberorder Int
   descript    String
-  ordercost   Int
+  ordercost   Float
   closeorderdetail String?
 }
 
@@ -68,6 +68,6 @@ model Stock {
   amount      Int
   nameitem    String
   itemdescript String
-  unitycost   Int
+  unitycost    Float
 }
 

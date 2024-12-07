@@ -43,6 +43,7 @@
     let state = localStorage.getItem("checkOrderState");
     if(state === null){
       localStorage.setItem("checkOrderState", false);
+      localStorage.setItem("checkOrderDelay", false);
      location.reload()
     }
     
@@ -111,12 +112,19 @@
   }
 
   window.addEventListener('load', () => {
-    const checkBox = document.getElementById("checkOrderValue");
+    
+    const checkBoxshowService = document.getElementById("checkOrderValue");
+
+
+    const checkBoxshowServiceDelay = document.getElementById("checkOrderDelay");
     // Verifica se há um valor armazenado no localStorage
-    const isChecked = localStorage.getItem("checkOrderState") === 'true';
+    const isCheckedService = localStorage.getItem("checkOrderState") === 'true';
+
+    const isCheckedServiceDelay = localStorage.getItem("checkOrderDelay") === 'true';
   
     // Define o estado do checkbox conforme o valor armazenado
-    checkBox.checked = isChecked;
+    checkBoxshowService.checked = isCheckedService;
+    checkBoxshowServiceDelay.checked = isCheckedServiceDelay;
   });
 
 
@@ -363,10 +371,14 @@
     if (checkOrder && checkOrder === false || checkOrder === "false" ) {  
       let checkState = 1
       if (checkState === 1) {  
-       
-        setTimeout(() => { getItemsOrder() }, 600)
-       
 
+      let delay = localStorage.getItem("checkOrderDelay")
+          
+          if(delay === "true"){
+            setTimeout(() => { getItemsOrder() }, 5000)
+          }else {
+           setTimeout(() => { getItemsOrder() }, 10)
+          }
       }
     }
 
@@ -374,13 +386,21 @@
  
 
   document.getElementById("checkOrderValue").addEventListener("click", () => {
-    let check = document.getElementById("checkOrderValue").checked;
-    localStorage.setItem("checkOrderState", check);
+    let checkValue = document.getElementById("checkOrderValue").checked;
+   
+    localStorage.setItem("checkOrderState", checkValue);
+   
     window.location.reload()
   });
 
+  document.getElementById("checkOrderDelay").addEventListener("click", () => {
+    let checkDelay = document.getElementById("checkOrderDelay").checked;
+    localStorage.setItem("checkOrderDelay", checkDelay);
+    // window.location.reload()
+  })
 
-//  cleanOrder()
+
+
 
   function getStatusColor(statusId) {
     switch (statusId) {
@@ -406,15 +426,17 @@
     localStorage.removeItem("order");
     localStorage.removeItem("stock");
     localStorage.removeItem("checkOrderState")
+    localStorage.removeItem("checkOrderDelay")
 
     
     window.location.href = '../login.html'
   });
 
+
   function nameEmployee(getUser) {
     // let name = document.getElementById("nameEmployee");
     // let usrName = getUser.user.toUpperCase();
-    // name.innerText = `${usrName} ${getUser.userID}`;
+    // name.value = `${usrName} ${getUser.userID}`;
   }
 
 

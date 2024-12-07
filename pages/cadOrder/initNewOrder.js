@@ -105,7 +105,7 @@
   const user = sessionStorage.getItem("user");
   let userInfo = JSON.parse(user);
   let verify = stockItems.filter((v) => v.idcompanies === userInfo.idcompanies);
-
+   
 
   let newWords = verify.map((v) => ({
     id: v.id,
@@ -133,41 +133,78 @@
   document.getElementById("select").addEventListener("change", function() {
     let selectedId = this.value;
     let selectedItem = newWords.find(word => word.idproduct == selectedId);
-     
+    
     if (selectedItem === undefined) {
       document.getElementById("idProduct").innerHTML = 'VALOR: 0';
       document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
-    }else if(selectedItem != 0){
-      let price = selectedItem.unitycost
-      let fixPrice = price.toFixed(2) 
-      document.getElementById("idProduct").innerHTML = `VALOR: ${fixPrice}`;
+    } else {
+      let price = selectedItem.unitycost;
+      let verify = price.toString().includes(".");
+
+      if(verify === true) {
+        let roundItem = selectedItem.unitycost.toFixed(2);
+        document.getElementById("idProduct").innerHTML = `VALOR: ${roundItem}`;
+      } else {
+        document.getElementById("idProduct").innerHTML = `VALOR: ${selectedItem.unitycost}`;
+      }
+      
       document.getElementById("idAmount").innerHTML = `ESTOQUE: ${selectedItem.amount}`;
     }
-    sessionStorage.setItem("itemSelect", JSON.stringify(selectedItem))
+    
+    sessionStorage.setItem("itemSelect", JSON.stringify(selectedItem));
+});
+
+// Adicionando o evento de mudança no Select2
+  $('#select').on('select2:select', function(e) {
+    let selectedId = e.params.data.id; // Quando usando o Select2, você pega o ID com e.params.data.id
+    let selectedItem = newWords.find(word => word.idproduct == selectedId);
+    
+    if (selectedItem === undefined) {
+      document.getElementById("idProduct").innerHTML = 'VALOR: 0';
+      document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
+    } else {
+      let price = selectedItem.unitycost;
+      let verify = price.toString().includes(".");
+
+      if(verify === true) {
+        let roundItem = selectedItem.unitycost.toFixed(2);
+        document.getElementById("idProduct").innerHTML = `VALOR: ${roundItem}`;
+      } else {
+        document.getElementById("idProduct").innerHTML = `VALOR: ${selectedItem.unitycost}`;
+      }
+
+      document.getElementById("idAmount").innerHTML = `ESTOQUE: ${selectedItem.amount}`;
+    }
+
+    sessionStorage.setItem("itemSelect", JSON.stringify(selectedItem));
+  });
+
+  $('#select').on('select2:unselect', function(e) {  
+    
+    document.getElementById("idProduct").innerHTML = 'VALOR: 0';
+    document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
+
+    sessionStorage.removeItem("itemSelect");
   });
 
   document.getElementById("addItemList").addEventListener("click", () => {
-
+    let itemSelected = sessionStorage.getItem("itemSelect");
+    let quantity = document.getElementById("quantity").value;
+    let numberOrder = Number(sessionStorage.getItem("lastOrder"));
     
-    let itemSelected = sessionStorage.getItem("itemSelect")
-    
-    let quantity = document.getElementById("quantity").value
-   
-     
-    let numberOrder = Number(sessionStorage.getItem("lastOrder"))
-    //console.log(numberOrder)
-    
-    if(itemSelected === "undefined" || itemSelected === null){ alert("Favor selecionar um item no campo Items")}
-
-    if(quantity === null || quantity === ''){
-      return alert("Favor preencher o campo quantidade")
-    } else if(quantity === 0 || quantity === "0"){
-      return alert("Favor preencher com um valor maior que 0")
+    if (itemSelected === "undefined" || itemSelected === null) {
+      return alert("Favor selecionar um item no campo Itens");
     }
-   //console.log(itemSelected)
-    addItemList(itemSelected, quantity, numberOrder)
-  
-  })
+
+    if (quantity === null || quantity === '') {
+      return alert("Favor preencher o campo quantidade");
+    } else if (quantity === 0 || quantity === "0") {
+      return alert("Favor preencher com um valor maior que 0");
+    }
+
+    addItemList(itemSelected, quantity, numberOrder);
+  });
+
 
 
 

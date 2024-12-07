@@ -10,15 +10,22 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Dependência jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  
+  <!-- Dependência Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  
   <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
   <script>
     $(function () {
       $("#tabs").tabs();
     });
 
     $(function () {
-
       const activeTabIndex = sessionStorage.getItem('activeTabIndex');
 
       if (activeTabIndex !== null) {
@@ -30,6 +37,31 @@
         sessionStorage.setItem('activeTabIndex', selectedTabIndex);
       });
     });
+
+    // Inicializando o Select2 para o select
+    $(document).ready(function() {
+    // Inicializando o Select2 para o select
+    $('#select').select2({
+        placeholder: "Selecione um item",
+        allowClear: true,
+        width: "150px",
+        minimumInputLength: 1,
+        language: {
+            inputTooShort: function() {
+                return ""; // Mensagem personalizada
+            },
+            errorLoading: function() {
+                return "";
+            },
+            loadingMore: function() {
+                return "";
+            },
+            noResults: function() {
+                return "";
+            }
+        }
+    });
+});
 
   </script>
 </head>
@@ -53,184 +85,129 @@
         <div class="form-content">
           <div class="form-left">
 
-
-
             <div class="title-form-left">
               <h3>NOVA ORDEM</h3>
             </div>
 
-   
-      <div id="content" style="display:none;">
-            <div id="tabs">
-              <ul>
-                <li><a href="#tabs-1">Dados Cliente</a></li>
-                <li><a href="#tabs-2">Items Ordem</a></li>
-                <!-- <li><a href="#tabs-3">Aenean lacinia</a></li> -->
-              </ul>
-     
-              <div id="tabs-1">
+            <div id="content" style="display:none;">
+              <div id="tabs">
+                <ul>
+                  <li><a href="#tabs-1">Dados Cliente</a></li>
+                  <li><a href="#tabs-2">Items Ordem</a></li>
+                </ul>
 
-                <div class="cadOrder">
-
-
-
-                  <label for="nameClient">Nome do cliente:</label>
-                  <input type="text" id="nameClient" required autocomplete="off">
-                  <label for="orderCost">Valor do serviço:</label>
-                  <input id="orderCost" placeholder="R$:0" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
-                    autocomplete="off">
-
-                  <label for="textArea" class="textLabel">Descrição do serviço:</label>
-                  <textarea id="textArea" rows="10" cols="30" required>
-                  </textarea>
-
-
-
-
-
+                <div id="tabs-1">
+                  <div class="cadOrder">
+                    <label for="nameClient">Nome do cliente:</label>
+                    <input type="text" id="nameClient" required autocomplete="off">
+                    <label for="orderCost">Valor do serviço:</label>
+                    <input id="orderCost" placeholder="R$:0" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
+                      autocomplete="off">
+                    <label for="textArea" class="textLabel">Descrição do serviço:</label>
+                    <textarea id="textArea" rows="10" cols="30" required></textarea>
+                  </div>
                 </div>
-              </div>
-              <div id="tabs-2">
 
-                <div class="secTabs">
-                  <div class="leftListSec">
-
-                    <div class="itemsInfo">
-                      <p>Valor total dos itens:</p>
-                      <p id="itemsCost">R$: 0</p>
-                    </div>
-
-                    <div class="addProuctList">
-
-                      <select name="select" id="select">
-                        <option value="0">
-                          Itens
-                        </option>
-                      </select>
-                      
-                      <input type="text" id="quantity" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
-                        placeholder="UND" autocomplete="off">
-
-                      <div class="infoStock">
-                        <p id="idProduct">VALOR: 0</p>
-                        <p id="idAmount">ESTOQUE: 0</p>
+                <div id="tabs-2">
+                  <div class="secTabs">
+                    <div class="leftListSec">
+                      <div class="itemsInfo">
+                        <p>Valor total dos itens:</p>
+                        <p id="itemsCost">R$: 0</p>
                       </div>
 
+                      <div class="addProuctList">
+                        <!-- Select2 Aplicado aqui -->
+                        <select name="select" id="select">
+                          <option value="">
+                            
+                          </option>
+                        </select>
+                        <input type="text" id="quantity" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
+                          placeholder="UND" autocomplete="off">
+                        <div class="infoStock">
+                          <p id="idProduct">VALOR: 0</p>
+                          <p id="idAmount">ESTOQUE: 0</p>
+                        </div>
+                      </div>
 
-
+                      <div class="productListAdd">
+                        <button id="addItemList">adicionar item</button>
+                      </div>
                     </div>
 
-                    <div class="productListAdd">
-                      <button id="addItemList">adicionar item</button>
+                    <div class="rightListSec">
+                      <button id="cleanList">limpar lista</button>
+                      <table>
+                        <tbody id="table"></tbody>
+                      </table>
                     </div>
-
                   </div>
-
-
-
-
-
-                  <div class="rightListSec">
-
-                    <button id="cleanList">limpar lista</button>
-
-                    <table>
-
-                      <tbody id="table">
-
-                      </tbody>
-
-                    </table>
-
-
-                  </div>
-
                 </div>
-
-
- 
-
               </div>
-
-              <!-- <div id="tabs-3">
-                <p>ola3</p>
-              </div> -->
-
             </div>
-          </div>
-            <!-- <div class="cadFormat">
-            </div> -->
             <button id="send" class="register" style="display:none;">Gravar Ordem</button>
-       
           </div>
-        
         </div>
       </div>
-   
     </div>
   </div>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
   </div>
 
- <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
- </div>
- 
   <style>
     .loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-        display: flex;
-        justify-content: center;
-        z-index: 1000;
-        opacity: 1;
-        transition: opacity 0.5s ease-out; /* Transição suave */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 1;
+      transition: opacity 0.5s ease-out; /* Transição suave */
     }
 
     .loading-spinner {
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #3498db; /* Cor do spinner */
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 2s linear infinite;
-        margin-top: 22%;
-        margin-left: 20%;
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db; /* Cor do spinner */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+      margin-top: 22%;
+      margin-left: 20%;
     }
 
     @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
+
     /* Estilo para o conteúdo da página */
     #content {
-        display: none; /* Inicialmente oculto */
-        opacity: 0;
-        transition: opacity 0.5s ease-out; /* Transição suave para aparecer */
+      display: none; /* Inicialmente oculto */
+      opacity: 0;
+      transition: opacity 0.5s ease-out; /* Transição suave para aparecer */
     }
+  </style>
 
-</style>
-
-
-
-
-<script>
-
+  <script>
     window.onload = function() {
       document.getElementById("loadingOverlay").style.opacity = "0";
       setTimeout(() => {
         var content = document.getElementById("content");
-              content.style.display = "block";
-              content.style.opacity = "1";
+        content.style.display = "block";
+        content.style.opacity = "1";
         document.getElementById("send").style.display = "block";
         document.getElementById("loadingOverlay").style.display = "none";
-       }, 500)
+      }, 500)
     };
-
-</script>
+  </script>
 </body>
 <script type="module" src="./initNewOrder.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>

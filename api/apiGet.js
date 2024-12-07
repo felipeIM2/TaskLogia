@@ -98,7 +98,6 @@ function apiGet(nameCompanie, showDataCompanie, loadPage, nameEmployee) {
 
         const dataStock = await fetchData('http://localhost:3000/stock');
        // console.log(dataStock)
-
         storeEncryptedData("stock", dataStock); // Usando localStorage para armazenar o stock de forma criptografada
 
       } catch (error) {

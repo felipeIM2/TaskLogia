@@ -303,6 +303,12 @@
   gap: 5px;
 }
 
+.addProuctList span {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .addProuctList select {
   width: 120px;
   border: none;
@@ -349,7 +355,7 @@ label {
   height: 24px;
   font-size: 18px;
   padding: 5px;
-
+  margin-top: 40px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
@@ -381,4 +387,28 @@ table {
   border: none;
   margin-bottom: 10px;
   background-color: transparent;
+}
+
+
+.select2-search input{
+  height: 25px;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+.select2-results__options {
+  overflow-y: scroll; /* Permite rolar verticalmente */
+  text-align: center;
+}
+
+/* Esconde a barra de rolagem, mas ainda permite rolar */
+.select2-results__options::-webkit-scrollbar {
+  width: 0px; /* Para ocultar a barra de rolagem horizontal */
+  height: 0px; /* Para ocultar a barra de rolagem vertical */
+}
+
+.select2-results__options {
+  -ms-overflow-style: none;  /* Para Internet Explorer 10+ */
+  scrollbar-width: none;  /* Para Firefox */
 }

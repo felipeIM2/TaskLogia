@@ -9,32 +9,7 @@
     .then(dataAccess => {
        
      // console.log(dataAccess)
-      initLogin(dataAccess)
-
-    })
-    .catch(error => {
-
-      console.error('Erro ao carregar o JSON:', error);
-    });
-
-
-    
-    sessionStorage.removeItem("order");
-    sessionStorage.removeItem("currentPage");
-    sessionStorage.removeItem("itemsOrder");
-    sessionStorage.removeItem("lastOrder");
-    sessionStorage.removeItem("newItemsOrder");
-    sessionStorage.removeItem("newLastOrder");
-    sessionStorage.removeItem("seq");
-    sessionStorage.removeItem("i");
-    localStorage.removeItem("stock");
-    localStorage.removeItem("checkOrderState");
-    
-
-
-
-function initLogin(dataAccess){
-  
+   
 let getUser = JSON.parse(sessionStorage.getItem("user"));
 
 if(getUser) {
@@ -89,3 +64,22 @@ const login = document.getElementById("login");
   newAdmin.addEventListener("click", () => location = '../pages/register/cadEmployee/cadAdmin/cadAdmin.html')
   }
 }
+
+)
+.catch(error => {
+  alert("Favor conectar ao banco de dados!!")
+  console.error('Erro ao carregar o JSON:', error);
+});
+
+sessionStorage.removeItem("order");
+sessionStorage.removeItem("currentPage");
+sessionStorage.removeItem("itemsOrder");
+sessionStorage.removeItem("lastOrder");
+sessionStorage.removeItem("newItemsOrder");
+sessionStorage.removeItem("newLastOrder");
+sessionStorage.removeItem("seq");
+sessionStorage.removeItem("i");
+localStorage.removeItem("stock");
+localStorage.removeItem("checkOrderState");
+localStorage.removeItem("checkOrderDelay");
+localStorage.removeItem("orderStatus");

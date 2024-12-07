@@ -35,7 +35,7 @@ function showItemList(itemsOrderCompanie, list, getUser) {
 
     p1.innerText = item.nameitem;
     p2.innerText = `QT: ${item.amountorder}`;
-    p3.innerText = `VL: ${itemCost.toFixed(2)}`;
+    p3.innerText = `VL: ${itemCost}`;
 
     button.appendChild(i)
     td.appendChild(button);
