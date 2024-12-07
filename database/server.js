@@ -30,10 +30,11 @@ app.use(express.json());
           name: data.name,      
           numberorder: data.numberorder, 
           descript: data.descript,
-          ordercost: data.ordercost,
+          // ordercost: data.ordercost,
           closeorderdetail: data.closeorderdetail || null
         },
       });
+      console.log(data)
      console.log({ mensagem: "Dados atualizados com sucesso!", order });
     } catch (err) {
       console.error('Erro ao atualizar no banco:', err);
