@@ -7,9 +7,26 @@
   let getUser = JSON.parse(sessionStorage.getItem("user"));
   
 
-  const secretKey = "12345678901"
+ 
 
    sessionStorage.setItem("seq", 1)
+
+   
+   fetch('http://localhost:3000/stock')
+   .then(res => {
+     if (!res.ok) {
+       throw new Error('Rede falhou: ' + res.status);
+     }
+     return res.json();
+   })
+   .then(dataStock => {
+     // Criptografar e armazenar no localStorage
+     const secretKey = "12345678901";
+     
+     let encryptedStock = CryptoJS.AES.encrypt(JSON.stringify(dataStock), secretKey).toString();
+     localStorage.setItem("stock", encryptedStock);
+
+
 
   if(getUser === null) {
   window.location.replace("../login.html");
@@ -46,8 +63,13 @@
     .catch(error => {
       console.error('Erro ao carregar o JSON:', error);
     });
+
+
+
     
      let confirmLastOrder = sessionStorage.getItem("lastOrder") 
+     let showNumber = document.getElementById("numberOrder")
+     showNumber.innerText = `N° ${confirmLastOrder}`
   
     if(confirmLastOrder === null || confirmLastOrder === undefined){
       sessionStorage.setItem("lastOrder", 1001)
@@ -95,12 +117,15 @@
         }, 400)
 
    });
+
+
   }
 
 
   const stock = localStorage.getItem("stock");
   let bytes = CryptoJS.AES.decrypt(stock, secretKey);
   let stockItems = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
 
   const user = sessionStorage.getItem("user");
   let userInfo = JSON.parse(user);
@@ -119,7 +144,9 @@
 
 
   newWords.forEach((word) => {
-    
+   
+    if(word.amount > 0 ){
+
     let select = document.getElementById("select");
     
     let option = document.createElement("option");
@@ -127,36 +154,13 @@
     option.innerHTML = word.nameitem
     
     select.appendChild(option);
+
+    }
   
   });
-  
-  document.getElementById("select").addEventListener("change", function() {
-    let selectedId = this.value;
-    let selectedItem = newWords.find(word => word.idproduct == selectedId);
-    
-    if (selectedItem === undefined) {
-      document.getElementById("idProduct").innerHTML = 'VALOR: 0';
-      document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
-    } else {
-      let price = selectedItem.unitycost;
-      let verify = price.toString().includes(".");
 
-      if(verify === true) {
-        let roundItem = selectedItem.unitycost.toFixed(2);
-        document.getElementById("idProduct").innerHTML = `VALOR: ${roundItem}`;
-      } else {
-        document.getElementById("idProduct").innerHTML = `VALOR: ${selectedItem.unitycost}`;
-      }
-      
-      document.getElementById("idAmount").innerHTML = `ESTOQUE: ${selectedItem.amount}`;
-    }
-    
-    sessionStorage.setItem("itemSelect", JSON.stringify(selectedItem));
-});
-
-// Adicionando o evento de mudança no Select2
   $('#select').on('select2:select', function(e) {
-    let selectedId = e.params.data.id; // Quando usando o Select2, você pega o ID com e.params.data.id
+    let selectedId = e.params.data.id; 
     let selectedItem = newWords.find(word => word.idproduct == selectedId);
     
     if (selectedItem === undefined) {
@@ -168,12 +172,12 @@
 
       if(verify === true) {
         let roundItem = selectedItem.unitycost.toFixed(2);
-        document.getElementById("idProduct").innerHTML = `VALOR: ${roundItem}`;
+        document.getElementById("idProduct").innerHTML = `Preço Unidade: ${roundItem}`;
       } else {
-        document.getElementById("idProduct").innerHTML = `VALOR: ${selectedItem.unitycost}`;
+        document.getElementById("idProduct").innerHTML = `Preço Unidade: ${selectedItem.unitycost}`;
       }
 
-      document.getElementById("idAmount").innerHTML = `ESTOQUE: ${selectedItem.amount}`;
+      document.getElementById("idAmount").innerHTML = `Quantidade Estoque: ${selectedItem.amount}`;
     }
 
     sessionStorage.setItem("itemSelect", JSON.stringify(selectedItem));
@@ -181,8 +185,8 @@
 
   $('#select').on('select2:unselect', function(e) {  
     
-    document.getElementById("idProduct").innerHTML = 'VALOR: 0';
-    document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
+    document.getElementById("idProduct").innerHTML = '';
+    document.getElementById("idAmount").innerHTML = '';
 
     sessionStorage.removeItem("itemSelect");
   });
@@ -290,3 +294,9 @@ function loadFormData() {
 
 // Chame esta função quando a página for carregada
 window.addEventListener("load", loadFormData);
+
+
+})
+.catch(error => {
+  console.error('Erro ao carregar o JSON:', error);
+});

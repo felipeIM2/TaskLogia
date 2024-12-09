@@ -1,6 +1,6 @@
 
 import removeItem from '../../middlewares/removeItem.js'
-
+import setDataStock from '../../middlewares/setNewStockdb.js';
 
 function showItemList(itemsOrderCompanie, list, getUser) {
 
@@ -14,11 +14,11 @@ function showItemList(itemsOrderCompanie, list, getUser) {
 
  
   list.innerHTML = '';
-
+   
   filteredItems.forEach(item => {
     let tr = document.createElement("tr");
     tr.setAttribute("class", "line");
-
+      
     let td = document.createElement("td");
 
     let p1 = document.createElement("p");
@@ -35,7 +35,7 @@ function showItemList(itemsOrderCompanie, list, getUser) {
 
     p1.innerText = item.nameitem;
     p2.innerText = `QT: ${item.amountorder}`;
-    p3.innerText = `VL: ${itemCost}`;
+    p3.innerText = `VL: ${item.unitycost}`;
 
     button.appendChild(i)
     td.appendChild(button);
@@ -48,23 +48,59 @@ function showItemList(itemsOrderCompanie, list, getUser) {
 
     totalCost += itemCost;
 
-    i.setAttribute("data-id", item.id);
-    i.setAttribute("data-amountorder", item.amountorder);
-    i.setAttribute("data-number", item.numberorder); 
+    i.setAttribute("id", item.id);
+    i.setAttribute("idcompanie", item.idcompanies);
+    i.setAttribute("idproduct", item.idproduct);
+    i.setAttribute("amountorder", item.amountorder);
+    i.setAttribute("number", item.numberorder); 
+ 
     
     button.addEventListener("click", (event) => {
 
-      const itemId = event.target.getAttribute("data-id");
-      const itemAmount = event.target.getAttribute("data-amountorder");
-      const itemNumber = event.target.getAttribute("data-number");
+     
+    
+      fetch('http://localhost:3000/stock')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Rede falhou: ' + res.status);
+        }
+        return res.json();
+      })
+      .then(data => {
 
-      let item = {iditem: itemId, amountorder: itemAmount, numberorder:itemNumber }
+        const itemId = event.target.getAttribute("id");
+        const idcompanie = event.target.getAttribute("idcompanie");
+        const idproduct = event.target.getAttribute("idproduct");
+        const itemAmount = event.target.getAttribute("amountorder");
+        const itemNumber = event.target.getAttribute("number");
         
-       removeItem(item)
+        let item = {iditem: itemId, amountorder: itemAmount, numberorder:itemNumber, idproduct:idproduct }
+
+
+        if(item.iditem === null){
+          setTimeout(() =>  {
+            location.reload()
+          }, 600);
+        }
+
+        let findItem = data.find((v) => v.idproduct === Number(item.idproduct) && v.idcompanies === Number(idcompanie))
+    
+        function addStock(){
+
+        let addStockItem = findItem.amount + Number(item.amountorder)
+        findItem.amount = addStockItem
+
+        }
+       addStock()
+
+        setDataStock(findItem)
+        removeItem(item)
+
+      })
 
         setTimeout(() => {
-          location.reload()
-        }, 800);
+         location.reload()
+        }, 900);
 
     });
   });

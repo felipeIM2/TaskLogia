@@ -87,6 +87,9 @@
 
             <div class="title-form-left">
               <h3>NOVA ORDEM</h3>
+              <h3 id="numberOrder">
+               
+              </h3>
             </div>
 
             <div id="content" style="display:none;">
@@ -118,16 +121,19 @@
 
                       <div class="addProuctList">
                         <!-- Select2 Aplicado aqui -->
-                        <select name="select" id="select">
-                          <option value="">
-                            
-                          </option>
-                        </select>
-                        <input type="text" id="quantity" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
-                          placeholder="UND" autocomplete="off">
+                        <div class="itemsInfos">
+                          <select name="select" id="select">
+                            <option value="">
+                              
+                            </option>
+                          </select>                        
+                          <input type="text" id="quantity" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
+                          placeholder="Quantidade" autocomplete="off">
+                        </div>
+                       
                         <div class="infoStock">
-                          <p id="idProduct">VALOR: 0</p>
-                          <p id="idAmount">ESTOQUE: 0</p>
+                          <p id="idAmount"></p>
+                          <p id="idProduct"></p>
                         </div>
                       </div>
 

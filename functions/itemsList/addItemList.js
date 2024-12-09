@@ -1,5 +1,6 @@
 
 import setdata from '../../middlewares/setNewItemOrder.js'
+import setDataStock from '../../middlewares/setNewStockdb.js';
 
 function addItemList(itemSelected, quantity, numberOrder) {
 
@@ -19,14 +20,38 @@ function addItemList(itemSelected, quantity, numberOrder) {
           "nameitem": item.nameitem,
           "unitycost": item.unitycost
         };
-          console.log(transform)
+          
          
-       // setdata(transform)
+      fetch('http://localhost:3000/stock')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Rede falhou: ' + res.status);
+          }
+          return res.json();
+        })
+        .then(data => {
+          
+          let findItem = data.find((v) => v.id === transform.id)
 
-        setTimeout(() => {
-        // location.reload()
-        }, 600);
-               
+          function reduceStock(){
+
+            let reduceStockItem = findItem.amount - transform.amountorder
+              if(reduceStockItem < 0){ 
+               alert(`Ação negada, o produto: ${transform.nameitem} ficara negativo em: ${reduceStockItem}`)
+               document.getElementById("quantity").value = ''
+              } else {
+                findItem.amount = reduceStockItem
+
+                setDataStock(findItem)
+                setdata(transform)
+
+                setTimeout(() => {
+                  location.reload()
+                }, 600);
+              }
+            }
+        reduceStock()
+      })
   }
       start()
 }

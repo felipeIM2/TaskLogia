@@ -334,7 +334,15 @@ label {
   margin-right: auto;
   gap: 2px;
   margin-bottom: 10px;
+  margin-top: 20px;
+  height: 38px;
 }
+
+.itemsInfos {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .productListAdd button {
   display: flex;
@@ -349,15 +357,19 @@ label {
   background-color: transparent;
 }
 
+#numberOrder {
+  margin-left: 40px;
+}
+
 #quantity {
   
-  width: 140px;
-  height: 24px;
+  width: 112px;
+  height: 28px;
   font-size: 18px;
-  padding: 5px;
-  margin-top: 40px;
-  margin-bottom: 10px;
+  padding: 10px;
   border-radius: 5px;
+  margin: 0px;
+  margin-left: 5px;
 }
 
 #cleanList {
