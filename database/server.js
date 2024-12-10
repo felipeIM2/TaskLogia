@@ -13,6 +13,30 @@ app.use(express.json());
 
 
 
+app.post("/editOrder", async (req, res) => {
+  const data = req.body;
+
+  try {
+   // Atualizar o pedido com base no id
+    const order = await prisma.order.update({
+      where: {
+        id: data.id,  // Usando o id do pedido para localizar o registro
+      },
+      data: {
+        idemployee: data.idemployee, 
+        name: data.name,      
+        descript: data.descript,
+        ordercost: data.ordercost
+      },
+    });
+    console.log(data)
+   console.log({ mensagem: "Dados atualizados com sucesso!", order });
+  } catch (err) {
+    console.error('Erro ao atualizar no banco:', err);
+    return res.status(500).json({ mensagem: "Erro ao atualizar os dados." });
+  }
+});
+
 
   app.post("/updateStatus", async (req, res) => {
     const data = req.body;

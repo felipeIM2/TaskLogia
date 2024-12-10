@@ -1,16 +1,23 @@
-import setData from "../../middlewares/setNewStatusdb.js";
+
+import setData from "../../middlewares/editInfosOrder.js";
 
 
 const secretKey = "12345678901";
 
-function statusEdit(order, newWords, getUser) {
+function statusEdit( order, getUser) {
 
+  
 
   function openEditModal(order) {
  
+    
     document.getElementById("orderName").value = order.name;
     document.getElementById("orderDetails").value = order.orderDetail;
-    document.getElementById("orderCost").value = order.orderCost
+
+    setTimeout(() => {
+      document.getElementById("orderCost").value = order.orderCost
+    }, 2000);
+    
     document.getElementById("editOrderModal").dataset.orderId = order.id;
     document.getElementById("editOrderModal").style.display = "block";
    
@@ -49,13 +56,22 @@ function statusEdit(order, newWords, getUser) {
           "descript": updatedOrder.orderDetail.trim(),
           "ordercost": Number(updatedOrder.orderCost.replace(",", "."))
         };
-          
+        
+        
+          if(transform.ordercost === order.orderCost){
+            console.log("não atualizar!")
+            location.reload();
+          }else {
 
-        //console.log(transform)
-       setData(transform)
-        location.reload()
+             setData(transform)     
+
+            setTimeout(() => {
+              location.reload();
+            }, 800);
+
+          }
       }
-    
+
   });
 
  

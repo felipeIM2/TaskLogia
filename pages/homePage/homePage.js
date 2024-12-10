@@ -210,14 +210,14 @@
         return sum + (item.amountorder * item.unitycost);
       }, 0);
       
-      // Store the total cost for the current order number
+      
       totalCosts[orderNumber] = totalCost;
     });
 
     // Now, update each order in newWords with its orderCost and totalCosts
     newWords.forEach(order => {
       const orderNumber = order.numberOrder;
-      
+  
       // If there is a total cost for this order number, add it to the order cost
       if (totalCosts[orderNumber] !== undefined) {
         sessionStorage.setItem("i", 2);
@@ -293,7 +293,7 @@
 
       const editOrder = document.createElement("a");
       editOrder.innerText = 'Editar Ordem';
-      editOrder.addEventListener("click", () => {statusEdit(order,newWords, getUser); });
+      editOrder.addEventListener("click", () => {statusEdit( order, getUser); });
         //console.log(order)
       const reOpenOrder = document.createElement("a");
       reOpenOrder.innerText = 'Reabrir Ordem';
