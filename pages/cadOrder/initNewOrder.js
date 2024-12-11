@@ -246,9 +246,7 @@
         idcompanies:getUser.idcompanies, 
         lastorder:lastOrder
       }
-    
 
-    
 
     let deletItems = confirm("Voce deseja limpar a lista de itens?")
    
@@ -259,7 +257,6 @@
     }else {
       console.log("Exclusão cancelada")
     }
-
 
   });
 
