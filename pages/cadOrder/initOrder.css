@@ -206,14 +206,15 @@
   resize: none; /* Impede que o usuário redimensione o textarea */
   text-align: center;
   padding: 10px;
-  background-color: rgb(52,52,64);
-  color: white;
+  background-color: #eaeaeb;
   font-size: 15px;
   width: 300px;
   height: 70px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  border: none;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
 #nameClient {margin-bottom: 15px;}
@@ -230,17 +231,18 @@
   font-size: 15px;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .form-left input {
-  color: white;
-  background-color: rgb(52,52,64);
+  
+  background-color: #eaeaeb;
   width: 250px;
   border: none;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
 /* Contêiner principal para aplicar o layout flex */
@@ -303,10 +305,11 @@
   gap: 5px;
 }
 
-.addProuctList span {
+.addProuctList .select2-selection__rendered  {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+ 
 }
 
 .addProuctList select {
@@ -350,12 +353,22 @@ label {
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  transition: 0.4s;
   border: none;
-  outline: none;
-  font-size: 17px;
-  cursor: pointer;
-  background-color: transparent;
+  width: 150px;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #007fff;
+  color: white;
 }
+
+.productListAdd button:hover {
+  margin-top: 25px;
+  transition: .4s;
+  background-color: #047af0;
+}
+
 
 #numberOrder {
   margin-left: 40px;
@@ -370,6 +383,8 @@ label {
   border-radius: 5px;
   margin: 0px;
   margin-left: 5px;
+  background-color: #eaeaeb;
+  color: #1b1b20;
 }
 
 #cleanList {
@@ -377,6 +392,7 @@ label {
   margin-left: auto;
   margin-right: auto;
   padding: 3px;
+  cursor: pointer;
 }
 
 
@@ -424,3 +440,5 @@ table {
   -ms-overflow-style: none;  /* Para Internet Explorer 10+ */
   scrollbar-width: none;  /* Para Firefox */
 }
+
+

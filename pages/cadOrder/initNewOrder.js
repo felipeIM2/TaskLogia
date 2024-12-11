@@ -112,7 +112,7 @@
           document.getElementById("quantity").value = ''
           let numberOrder = Number(sessionStorage.getItem("lastOrder"))
            sessionStorage.setItem("lastOrder", numberOrder + 1)
-         alert("Sua ordem foi gravada!")
+         alert("Sua ordem foi salva!")
          location.reload()
         }, 400)
 
@@ -233,12 +233,8 @@
   });
 
 
-
-
   document.getElementById("cleanList").addEventListener("click", (itemsOrderCompanie) => {
     
-   
-
     let lastOrder = Number(sessionStorage.getItem("lastOrder"));
 
     let deletAllItem = 
@@ -246,7 +242,6 @@
         idcompanies:getUser.idcompanies, 
         lastorder:lastOrder
       }
-
 
     let deletItems = confirm("Voce deseja limpar a lista de itens?")
    
@@ -260,12 +255,19 @@
 
   });
 
+})
+
+.catch(error => {
+  console.error('Erro ao carregar o JSON:', error);
+});
+
 
   // Função para salvar os dados no localStorage
 function saveFormData() {
   const nameClient = document.getElementById("nameClient").value;
   const orderCost = document.getElementById("orderCost").value;
   const textArea = document.getElementById("textArea").value;
+ 
 
   sessionStorage.setItem("nameClient", nameClient);
   sessionStorage.setItem("orderCost", orderCost);
@@ -283,17 +285,18 @@ function loadFormData() {
   const nameClient = sessionStorage.getItem("nameClient");
   const orderCost = sessionStorage.getItem("orderCost");
   const textArea = sessionStorage.getItem("textArea");
-
+  
   if (nameClient) document.getElementById("nameClient").value = nameClient;
   if (orderCost) document.getElementById("orderCost").value = orderCost;
-  if (textArea) document.getElementById("textArea").value = textArea;
+  if (textArea) document.getElementById("textArea").value = textArea
+ 
 }
 
 // Chame esta função quando a página for carregada
-window.addEventListener("load", loadFormData);
-
-
-})
-.catch(error => {
-  console.error('Erro ao carregar o JSON:', error);
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    loadFormData()
+  }, 500);
 });
+
+

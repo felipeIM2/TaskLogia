@@ -26,8 +26,13 @@ function statusDelet(newWords) {
        })
        .then(data => {
           
+        //  console.log(newWords)
+        //  console.log(data)
+
         let findItems = data.filter((v) => v.numberorder === newWords.numberOrder)
-            
+
+          console.log(findItems)
+
         fetch('http://localhost:3000/stock')
         .then(res => {
           if (!res.ok) {
@@ -37,18 +42,27 @@ function statusDelet(newWords) {
         })
         .then(data => {
 
+          if(findItems.length === 0) {
+
+            setdata(newWords)
+
+            setTimeout(() => {
+              location.reload()
+            }, 500);
+
+          }else {
+
           findItems.forEach(item => {
               
-              //console.log(item)
               //console.log(data)
             let stockItem = data.find((v) => v.idproduct === item.idproduct);
               //console.log(stockItem)
-
+              
             if (stockItem) {
                 //console.log(stockItem.amount, item.amountorder)
               stockItem.amount += item.amountorder;
 
-              setDataStock(stockItem)
+             setDataStock(stockItem)
 
               setdata(newWords)
       
@@ -59,6 +73,7 @@ function statusDelet(newWords) {
             }
           })
 
+         }
         })
          
        })

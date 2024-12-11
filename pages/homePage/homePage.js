@@ -44,6 +44,7 @@
     if(state === null){
       localStorage.setItem("checkOrderState", false);
       localStorage.setItem("checkOrderDelay", false);
+      localStorage.setItem("checkAscNumberOrder", false);
      location.reload()
     }
     
@@ -115,16 +116,20 @@
     
     const checkBoxshowService = document.getElementById("checkOrderValue");
 
-
     const checkBoxshowServiceDelay = document.getElementById("checkOrderDelay");
-    // Verifica se há um valor armazenado no localStorage
+
+    const checkBoxAscNumberOrder = document.getElementById("checkAscNumberOrder");
+
+  
     const isCheckedService = localStorage.getItem("checkOrderState") === 'true';
 
     const isCheckedServiceDelay = localStorage.getItem("checkOrderDelay") === 'true';
-  
-    // Define o estado do checkbox conforme o valor armazenado
+
+    const ischeckBoxAscNumberOrder =  localStorage.getItem("checkAscNumberOrder") === 'true';
+
     checkBoxshowService.checked = isCheckedService;
     checkBoxshowServiceDelay.checked = isCheckedServiceDelay;
+    checkBoxAscNumberOrder.checked = ischeckBoxAscNumberOrder;
   });
 
 
@@ -236,7 +241,9 @@
 
     let status = JSON.parse(localStorage.getItem("orderStatus"))
     
-   
+    let ascNumberOrder = localStorage.getItem("checkAscNumberOrder");
+    if(ascNumberOrder === "false") { newWords.sort((a, b) => b.numberOrder - a.numberOrder); }
+      
     const tableBody = document.getElementById("localTable");
     tableBody.innerHTML = '';  
 
@@ -247,7 +254,6 @@
     for (let i = startIndex; i < endIndex; i++) {
       const order = newWords[i];
    
-    
       const statusName = status.filter((v) => v.idstatus === order.idstatus);
 
       const row = document.createElement("tr");
@@ -301,7 +307,7 @@
       
       const deletOrder = document.createElement("a");
       deletOrder.innerText = 'Excluir Ordem';
-      deletOrder.addEventListener("click", () => { statusDelet(order); });
+      deletOrder.addEventListener("click", () => { statusDelet(order)});
 
 
 
@@ -377,7 +383,7 @@
           if(delay === "true"){
             setTimeout(() => { getItemsOrder() }, 5000)
           }else {
-           setTimeout(() => { getItemsOrder() }, 10)
+           setTimeout(() => { getItemsOrder() }, 100)
           }
       }
     }
@@ -387,19 +393,23 @@
 
   document.getElementById("checkOrderValue").addEventListener("click", () => {
     let checkValue = document.getElementById("checkOrderValue").checked;
-   
     localStorage.setItem("checkOrderState", checkValue);
    
-    window.location.reload()
+    location.reload()
   });
 
   document.getElementById("checkOrderDelay").addEventListener("click", () => {
     let checkDelay = document.getElementById("checkOrderDelay").checked;
     localStorage.setItem("checkOrderDelay", checkDelay);
-    // window.location.reload()
+    // location.reload()
   })
 
-
+  document.getElementById("checkAscNumberOrder").addEventListener("click", () => {
+    let checkDelay = document.getElementById("checkAscNumberOrder").checked;
+    localStorage.setItem("checkAscNumberOrder", checkDelay);
+    
+    location.reload()
+  })
 
 
   function getStatusColor(statusId) {
@@ -427,6 +437,7 @@
     localStorage.removeItem("stock");
     localStorage.removeItem("checkOrderState")
     localStorage.removeItem("checkOrderDelay")
+    localStorage.removeItem("checkAscNumberOrder")
 
     
     window.location.href = '../login.html'

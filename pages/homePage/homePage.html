@@ -87,8 +87,8 @@
                     </li>
                     <li>
                       <label>
-                        <input type="checkbox">
-                        Espaço 2
+                        <input type="checkbox" id="checkAscNumberOrder">
+                        Organizar acrescente
 
                       </label>
                   </ul>
@@ -124,7 +124,7 @@
       <form id="editOrderForm">
         <div>
           <label for="orderName">Cliente:</label>
-          <input type="text" id="orderName" name="orderName" required />
+          <input type="text" id="orderName" name="orderName" required  autocomplete="off"/>
         </div>
         <div>
           <label for="orderDetails">Descrição:</label>
@@ -132,7 +132,7 @@
         </div>
         <div>
           <label for="orderCost">Valor da Ordem:</label>
-          <input value="Digite o valor do serviço" placeholder="Valor do serviço" id="orderCost" name="orderCost"  oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"/>
+          <input autocomplete="off" value="Digite o valor do serviço" placeholder="Valor do serviço" id="orderCost" name="orderCost"  oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"/>
 
         </div>
         <button type="submit">Salvar Alterações</button>
