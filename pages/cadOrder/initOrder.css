@@ -5,6 +5,8 @@
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma;
     outline: none;
+    font-family: "Montserrat", sans-serif;
+    
 }
 :root{
     --default-color:#343440;
@@ -272,31 +274,83 @@
 .rightListSec {
   
   width: 400px;            /* Largura fixa, pode ser ajustada */
-  max-height: 345px;     /* Altura máxima com rolagem */
+  max-height: 225px;     /* Altura máxima com rolagem */
   overflow-y: auto;      /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+}
+
+.rightListSec::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .leftListSec p {
   text-align: center;
 }
 
-/* Estilo das células da tabela (td) */
+.tableLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  background-color: #f1f1f1;
+  width: 390px;
+  margin-top: 5px;
+  transition: .2s;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 0px 1px;
+  font-weight: bold;
+}
+
+.line:hover {
+  background-color: #dbd9d9;
+  transition: .2s;
+}
+
+
 .line td {
   display: flex;              /* Torna o conteúdo dentro da td um contêiner flexível */
   justify-content: center;    /* Alinha os elementos horizontalmente ao centro */
   align-items: center;        /* Alinha os elementos verticalmente ao centro */
-  width: 300px;               /* Largura fixa da célula */
   padding: 4px;               /* Espaçamento interno para a célula */
   border: 1px solid #ddd;     /* Borda para a célula */
   margin: 4px;                /* Margem externa (se necessário, pode ser ajustada) */
   border: none;
-  gap: 10px;
+  gap: 20px;
 }
 
+.nameItem {
+  width: 400px;
+  margin-left: 20px;
+  margin-right: 25px;
+  /* background-color: #007fff; */
+  font-size: 13px;
+  text-align: center;
+ }
+
+.amountItem, .costItem { 
+  width: 260px;
+  /* background-color: #007fff; */
+  font-size: 13px;
+  text-align: center;
+}
 
 .itemsInfo {
   margin-top: 15px;
   margin-bottom: 30px;
+}
+
+#itemsCost {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+  background-color: darkgreen;
+  color:#eaeaeb ;
+  font-weight: bold;
+  margin-top: 5px;
+  border-radius: 10px;
 }
 
 .addProuctList {
@@ -305,12 +359,15 @@
   gap: 5px;
 }
 
-.addProuctList .select2-selection__rendered  {
+.addProuctList .select2-selection__rendered{
   text-align: center;
   margin-left: auto;
   margin-right: auto;
- 
+  font-size: 14px;
+  /* box-shadow: whitesmoke  1px 2px 2px; */
 }
+
+
 
 .addProuctList select {
   width: 120px;
@@ -341,6 +398,7 @@ label {
   height: 38px;
 }
 
+
 .itemsInfos {
   margin-left: auto;
   margin-right: auto;
@@ -351,22 +409,24 @@ label {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
   transition: 0.4s;
   border: none;
-  width: 150px;
-  padding: 10px;
+  width: 130px;
+  padding: 8px;
   justify-content: center;
   border-radius: 10px;
   background-color: #007fff;
   color: white;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 2px;
 }
 
 .productListAdd button:hover {
-  margin-top: 25px;
+  margin-top: 42px;
   transition: .4s;
-  background-color: #047af0;
+  background-color: #0667c9;
+  
 }
 
 
@@ -385,16 +445,33 @@ label {
   margin-left: 5px;
   background-color: #eaeaeb;
   color: #1b1b20;
+  font-size: 15px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 2px;
+  font-weight: 600;
 }
 
 #cleanList {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  padding: 3px;
+  margin-bottom: 10px;
   cursor: pointer;
+  border: none;
+  width: 120px;
+  padding: 8px;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #007fff;
+  color: white;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 2px;
+  transition: .4s;
+  font-size: 14px;
 }
 
+#cleanList:hover {
+  background-color: rgb(179, 5, 5);
+  transition: .5s;
+}
 
 table {
  width: 100%;
@@ -411,23 +488,23 @@ table {
   align-content: center;
 }
 
-#cleanList {
-  border: none;
-  margin-bottom: 10px;
-  background-color: transparent;
+.ui-tabs-anchor {
+  font-weight: bold;
+  transition: .4s;
 }
 
 
 .select2-search input{
   height: 25px;
   text-align: center;
-  font-size: 16px;
+  font-size: 11px;
 }
 
 
 .select2-results__options {
   overflow-y: scroll; /* Permite rolar verticalmente */
   text-align: center;
+  font-size: 12px;
 }
 
 /* Esconde a barra de rolagem, mas ainda permite rolar */
@@ -441,4 +518,26 @@ table {
   scrollbar-width: none;  /* Para Firefox */
 }
 
+.idAmountOFF , .idProductOFF {
+  display: none;
+}
+
+.idAmountON, .idProductON  {
+  width: 270px;
+  background-color: #eaeaeb;
+  font-size: 14px;
+  margin-bottom: 5px;
+  padding: 2px;
+  cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.15) 1px 1px 1px 1px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#idAmount:hover {
+  background-color: #dbd9d9;
+}
+#idProduct:hover {
+  background-color: #dbd9d9;
+}
 

@@ -27,15 +27,21 @@ function showItemList(itemsOrderCompanie, list, getUser) {
     let button = document.createElement("button");
     let i = document.createElement("i");
 
-    button.style.cssText = "width: 40px; background-color: transparent; border:none; font-size:14px;";
+    button.style.cssText = "width: 100px; background-color: transparent; border:none; font-size:14px; margin-left:4px; ";
+    button.addEventListener("mouseover", () => {button.style.cssText = "color:#f51414; width: 90px; background-color: transparent; border:none; font-size:14px; transition:.4s; cursor:pointer;"})
+    button.addEventListener('mouseout', () => {button.style.cssText = "width: 100px; background-color: transparent; border:none; font-size:14px; transition:.4s; margin-left:4px;";});
+  
     i.classList = "fa-regular fa-trash-can"
     button.style.cursor = "pointer";
 
     let itemCost = item.amountorder * item.unitycost;
 
+    p1.setAttribute("class", "nameItem")
+    p2.setAttribute("class", "amountItem")
+    p3.setAttribute("class", "costItem")
     p1.innerText = item.nameitem;
     p2.innerText = `QT: ${item.amountorder}`;
-    p3.innerText = `VL: ${item.unitycost}`;
+    p3.innerText = `VLU: ${item.unitycost}`;
 
     button.appendChild(i)
     td.appendChild(button);

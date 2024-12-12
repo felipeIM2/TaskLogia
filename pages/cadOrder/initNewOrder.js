@@ -6,9 +6,6 @@
  
   let getUser = JSON.parse(sessionStorage.getItem("user"));
   
-
- 
-
    sessionStorage.setItem("seq", 1)
 
    
@@ -164,11 +161,21 @@
     let selectedItem = newWords.find(word => word.idproduct == selectedId);
     
     if (selectedItem === undefined) {
-      document.getElementById("idProduct").innerHTML = 'VALOR: 0';
-      document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
+
+     document.getElementById("idProduct").innerHTML = 'VALOR: 0';
+     document.getElementById("idAmount").innerHTML = 'ESTOQUE: 0';
+      
+
     } else {
       let price = selectedItem.unitycost;
       let verify = price.toString().includes(".");
+
+      let idp = document.getElementById("idProduct")
+      let ida = document.getElementById("idAmount")
+        
+      idp.setAttribute("class", "idProductON")  
+      ida.setAttribute("class", "idAmountON")  
+
 
       if(verify === true) {
         let roundItem = selectedItem.unitycost.toFixed(2);
@@ -187,6 +194,13 @@
     
     document.getElementById("idProduct").innerHTML = '';
     document.getElementById("idAmount").innerHTML = '';
+
+    let idp = document.getElementById("idProduct")
+    let ida = document.getElementById("idAmount")
+      
+    idp.setAttribute("class", "idProductOFF")  
+    ida.setAttribute("class", "idAmountOFF")  
+
 
     sessionStorage.removeItem("itemSelect");
   });

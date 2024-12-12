@@ -5,7 +5,7 @@
   text-decoration: none;
   font-family: 'Segoe UI', Tahoma;
   outline: none;
-  
+  font-family: "Montserrat", sans-serif;
 }
 
 html {
@@ -151,13 +151,14 @@ html {
 
 }
 
-.form-container h1 {
-  font-size: 50px;
+.form-container h2 {
+  font-size: 40px;
   margin-bottom: 20px;
   color: #f6f6f9;
 }
 
 .form-content{
+  
     background-color: var(--neutral-color-2);
     width: 900px;
     display: flex;
@@ -168,12 +169,11 @@ html {
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
-    
-    
+      
 }
 
-.form-container h1 {
-  margin-top: 5%;
+.form-container h2 {
+  margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
 }
