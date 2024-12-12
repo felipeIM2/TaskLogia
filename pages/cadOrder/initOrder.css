@@ -262,6 +262,17 @@
   
 }
 
+#totalItems {
+  margin-top: 10px;
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #dbd9d9;
+  height: 20px;
+  width: 240px;
+  text-align: center;
+  border-radius: 10px;
+}
 
 /* Definindo a largura e o fundo da lista à esquerda */
 .leftListSec {
@@ -274,6 +285,7 @@
 .rightListSec {
   
   width: 400px;            /* Largura fixa, pode ser ajustada */
+  height: 225px;
   max-height: 225px;     /* Altura máxima com rolagem */
   overflow-y: auto;      /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
 }
@@ -346,9 +358,8 @@
   margin-left: auto;
   margin-right: auto;
   padding: 3px;
-  background-color: darkgreen;
-  color:#eaeaeb ;
-  font-weight: bold;
+  background-color: #dbd9d9;
+  font-weight:bolder;
   margin-top: 5px;
   border-radius: 10px;
 }
@@ -400,34 +411,44 @@ label {
 
 
 .itemsInfos {
+  width: 350px;
+  height: 40px;
+  /* border: black solid 1px; */
   margin-left: auto;
   margin-right: auto;
-}
-
-
-.productListAdd button {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  transition: 0.4s;
-  border: none;
-  width: 130px;
-  padding: 8px;
-  justify-content: center;
-  border-radius: 10px;
-  background-color: #007fff;
-  color: white;
-  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 2px;
-}
-
-.productListAdd button:hover {
-  margin-top: 42px;
-  transition: .4s;
-  background-color: #0667c9;
   
 }
+
+
+.productListAdd {
+
+  width: 50px;
+  margin-left: 5px;
+  transition: 0.4s;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #dbd9d9;
+  /* color: white; */
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 1px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.productListAdd i {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+#icon {
+  transition: .1s;
+  cursor: pointer;
+}
+
+#icon.fa-check {
+  color: green; 
+}
+
 
 
 #numberOrder {
@@ -461,16 +482,20 @@ label {
   padding: 8px;
   justify-content: center;
   border-radius: 10px;
-  background-color: #007fff;
-  color: white;
+  background-color: #dbd9d9;
+  /* color: white; */
   box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 2px;
   transition: .4s;
   font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 }
 
 #cleanList:hover {
   background-color: rgb(179, 5, 5);
+  color: #cccaca;
   transition: .5s;
+  
 }
 
 table {
@@ -489,8 +514,11 @@ table {
 }
 
 .ui-tabs-anchor {
+  background-color: #bababf;
   font-weight: bold;
   transition: .4s;
+  border: none;
+  filter: none;
 }
 
 
@@ -500,6 +528,11 @@ table {
   font-size: 11px;
 }
 
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  border: none !important;
+  background: none !important;
+  
+}
 
 .select2-results__options {
   overflow-y: scroll; /* Permite rolar verticalmente */

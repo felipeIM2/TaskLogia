@@ -1,5 +1,6 @@
  
- import addItemList from '../../functions/itemsList/addItemList.js';
+
+import addItemList from '../../functions/itemsList/addItemList.js';
  import showItemList from '../../functions/itemsList/showItemList.js';
  import cleanAllItems from '../../middlewares/removeItemsAll.js'
  import setData from '../../middlewares/setNewOrderdb.js';
@@ -218,9 +219,11 @@
       return alert("Favor preencher o campo quantidade");
     } else if (quantity === 0 || quantity === "0") {
       return alert("Favor preencher com um valor maior que 0");
+    }else{
+      
     }
-
     addItemList(itemSelected, quantity, numberOrder);
+  
   });
 
 
@@ -247,30 +250,37 @@
   });
 
 
-  document.getElementById("cleanList").addEventListener("click", (itemsOrderCompanie) => {
+  document.getElementById("cleanList").addEventListener("click", () => {
     
+
+
     let lastOrder = Number(sessionStorage.getItem("lastOrder"));
 
-    let deletAllItem = 
-      {
-        idcompanies:getUser.idcompanies, 
-        lastorder:lastOrder
-      }
-
-    let deletItems = confirm("Voce deseja limpar a lista de itens?")
+    let deletAllItem = {
+        idcompanies: getUser.idcompanies, 
+        lastorder: lastOrder
+    };
    
-    if(deletItems === true){
-     
-      cleanAllItems(deletAllItem)
-      location.reload()
-    }else {
-      console.log("Exclusão cancelada")
-    }
+    let itemsOrder = sessionStorage.getItem("itemsOrder")
+    let bytesItems = CryptoJS.AES.decrypt(itemsOrder, secretKey);
+    let dataItemsLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
+     console.log(dataItemsLocal)
+
+    let itemsStock = localStorage.getItem("stock")
+    let bytesStock = CryptoJS.AES.decrypt(itemsStock, secretKey);
+    let dataItemsStock = JSON.parse(bytesStock.toString(CryptoJS.enc.Utf8));
+      console.log(dataItemsStock)
+
+   dataItemsLocal.forEach(v => {
+      console.log("aqui")
+   })
+
+
+
 
   });
 
 })
-
 .catch(error => {
   console.error('Erro ao carregar o JSON:', error);
 });

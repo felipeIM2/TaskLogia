@@ -132,6 +132,8 @@
                           </select>                        
                           <input type="text" id="quantity" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
                           placeholder="Quantidade" autocomplete="off">
+                          <button id="addItemList" class="productListAdd" ><i class="fa-regular fa-plus" id="icon"></i></button>
+
                         </div>
                        
                         <div class="infoStock">
@@ -140,13 +142,11 @@
                         </div>
                       </div>
 
-                      <div class="productListAdd">
-                        <button id="addItemList">adicionar item</button>
-                      </div>
+
                     </div>
                     <div class="tableLeft">
                       <div>
-                        <button id="cleanList">limpar lista</button>
+                        <button id="cleanList">Limpar lista</button>
                       </div>
                       <div class="rightListSec">
 
@@ -156,6 +156,9 @@
                           </tbody>
                         </table>
 
+                      </div>
+                      <div id="totalItems">
+                        Total de itens adicionados: 0
                       </div>
                     </div>
                   </div>

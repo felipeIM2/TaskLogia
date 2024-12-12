@@ -14,8 +14,12 @@ function showItemList(itemsOrderCompanie, list, getUser) {
 
  
   list.innerHTML = '';
-   
+  
+
   filteredItems.forEach(item => {
+
+   
+    
     let tr = document.createElement("tr");
     tr.setAttribute("class", "line");
       
@@ -33,6 +37,25 @@ function showItemList(itemsOrderCompanie, list, getUser) {
   
     i.classList = "fa-regular fa-trash-can"
     button.style.cursor = "pointer";
+
+    let addButton = document.getElementById("icon")
+    addButton.addEventListener("click", () => {
+      
+      addButton.classList.remove("fa-plus"); 
+      addButton.classList.add("fa-check");   
+      
+      setTimeout(() => {
+        addButton.classList.remove("fa-check"); 
+        addButton.classList.add("fa-plus"); 
+      }, 2000);
+    });
+
+    // addButton.addEventListener("mouseout", () => {
+   
+    //   addButton.classList.remove("fa-check");  
+    //   addButton.classList.add("fa-plus");    
+    // });
+
 
     let itemCost = item.amountorder * item.unitycost;
 
@@ -60,11 +83,13 @@ function showItemList(itemsOrderCompanie, list, getUser) {
     i.setAttribute("amountorder", item.amountorder);
     i.setAttribute("number", item.numberorder); 
  
-    
+    let totalItems = filteredItems.length;
+      document.getElementById("totalItems").innerText = `Total de itens adicionados: ${totalItems}`
+
+
     button.addEventListener("click", (event) => {
 
      
-    
       fetch('http://localhost:3000/stock')
       .then(res => {
         if (!res.ok) {
@@ -99,8 +124,8 @@ function showItemList(itemsOrderCompanie, list, getUser) {
         }
        addStock()
 
-        setDataStock(findItem)
-        removeItem(item)
+        // setDataStock(findItem)
+        // removeItem(item)
 
       })
 
