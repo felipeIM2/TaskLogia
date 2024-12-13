@@ -22,6 +22,7 @@ function showItemList(itemsOrderCompanie, list, getUser) {
     
     let tr = document.createElement("tr");
     tr.setAttribute("class", "line");
+   
       
     let td = document.createElement("td");
 
@@ -31,9 +32,17 @@ function showItemList(itemsOrderCompanie, list, getUser) {
     let button = document.createElement("button");
     let i = document.createElement("i");
 
-    button.style.cssText = "width: 100px; background-color: transparent; border:none; font-size:14px; margin-left:4px; ";
-    button.addEventListener("mouseover", () => {button.style.cssText = "color:#f51414; width: 90px; background-color: transparent; border:none; font-size:14px; transition:.4s; cursor:pointer;"})
-    button.addEventListener('mouseout', () => {button.style.cssText = "width: 100px; background-color: transparent; border:none; font-size:14px; transition:.4s; margin-left:4px;";});
+    button.style.cssText = "width: 100px; background-color: transparent; border:none; font-size:14px; margin-left:4px; "; 
+
+    button.addEventListener("mouseover", () => {
+      td.style.cssText = "width:378px; transition:.4s; "
+      button.style.cssText = "color:#f51414; width:100px; background-color: transparent; border:none; font-size:14px; transition:.4s; cursor:pointer; margin-left:4px; "
+    })
+
+    button.addEventListener('mouseout', () => {
+      td.style.cssText = "width:390px; transition:.6s; "
+      button.style.cssText = "width: 100px; background-color: transparent; border:none; font-size:14px; transition:.4s; margin-left:4px;";
+    });
   
     i.classList = "fa-regular fa-trash-can"
     button.style.cursor = "pointer";
@@ -50,11 +59,6 @@ function showItemList(itemsOrderCompanie, list, getUser) {
       }, 2000);
     });
 
-    // addButton.addEventListener("mouseout", () => {
-   
-    //   addButton.classList.remove("fa-check");  
-    //   addButton.classList.add("fa-plus");    
-    // });
 
 
     let itemCost = item.amountorder * item.unitycost;

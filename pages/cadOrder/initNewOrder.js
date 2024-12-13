@@ -1,9 +1,9 @@
  
-
-import addItemList from '../../functions/itemsList/addItemList.js';
- import showItemList from '../../functions/itemsList/showItemList.js';
- import cleanAllItems from '../../middlewares/removeItemsAll.js'
- import setData from '../../middlewares/setNewOrderdb.js';
+  import addItemList from '../../functions/itemsList/addItemList.js';
+  import showItemList from '../../functions/itemsList/showItemList.js';
+  import cleanAllItems from '../../middlewares/removeItemsAll.js'
+  import setDataStock from '../../middlewares/setNewStockdb.js'
+  import setData from '../../middlewares/setNewOrderdb.js';
  
   let getUser = JSON.parse(sessionStorage.getItem("user"));
   
@@ -260,25 +260,38 @@ import addItemList from '../../functions/itemsList/addItemList.js';
         idcompanies: getUser.idcompanies, 
         lastorder: lastOrder
     };
-   
+  
     let itemsOrder = sessionStorage.getItem("itemsOrder")
     let bytesItems = CryptoJS.AES.decrypt(itemsOrder, secretKey);
     let dataItemsLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
-     console.log(dataItemsLocal)
+     //console.log(dataItemsLocal)
 
     let itemsStock = localStorage.getItem("stock")
     let bytesStock = CryptoJS.AES.decrypt(itemsStock, secretKey);
     let dataItemsStock = JSON.parse(bytesStock.toString(CryptoJS.enc.Utf8));
-      console.log(dataItemsStock)
 
-   dataItemsLocal.forEach(v => {
-      console.log("aqui")
-   })
+    let stockCompanie = dataItemsStock.filter(v => v.idcompanies === getUser.idcompanies)
+      
 
+   dataItemsLocal.forEach(value => {
 
+     let res = stockCompanie.find((v) => v.idproduct === value.idproduct)
 
+      if(res){
+        res.amount =  (Number(res.amount) + Number(value.amountorder))
+      }
+     
+      setDataStock(res)
+      cleanAllItems(deletAllItem)
+
+      setTimeout(() => {
+        location.reload()
+      }, 500);
+
+    }) 
 
   });
+  
 
 })
 .catch(error => {
@@ -291,16 +304,32 @@ function saveFormData() {
   const nameClient = document.getElementById("nameClient").value;
   const orderCost = document.getElementById("orderCost").value;
   const textArea = document.getElementById("textArea").value;
- 
 
   sessionStorage.setItem("nameClient", nameClient);
   sessionStorage.setItem("orderCost", orderCost);
   sessionStorage.setItem("textArea", textArea);
+
+  let itemSelected = JSON.parse(sessionStorage.getItem("itemSelect"));
+  const quantity = document.getElementById("quantity").value;
+
+  if(itemSelected) {
+
+    if(itemSelected.amount >= quantity){
+      const quantityColor = document.getElementById("quantity")
+        quantityColor.style.color = "black" //"rgb(34, 135, 3)"
+    }else {
+      const quantityColor = document.getElementById("quantity")
+        quantityColor.style.color = "rgb(252, 16, 0)"
+    }
+  }
+
+
 }
 
 document.getElementById("nameClient").addEventListener("input", saveFormData);
 document.getElementById("orderCost").addEventListener("input", saveFormData);
 document.getElementById("textArea").addEventListener("input", saveFormData);
+document.getElementById("quantity").addEventListener("input", saveFormData);
 
 
 
@@ -309,11 +338,14 @@ function loadFormData() {
   const nameClient = sessionStorage.getItem("nameClient");
   const orderCost = sessionStorage.getItem("orderCost");
   const textArea = sessionStorage.getItem("textArea");
+
   
   if (nameClient) document.getElementById("nameClient").value = nameClient;
   if (orderCost) document.getElementById("orderCost").value = orderCost;
   if (textArea) document.getElementById("textArea").value = textArea
  
+
+
 }
 
 // Chame esta função quando a página for carregada

@@ -1,5 +1,5 @@
   
-
+  import removeItemsOrder from '../../functions/cleanItemsOrder.js'
   import statusInit from '../../functions/modifyStatus/statusInit.js';
   import statusClose from '../../functions/modifyStatus/statusClose.js';
   import showDataCompanie from '../../functions/showDataCompanie.js'
@@ -473,5 +473,5 @@ document.addEventListener("click", (event) => {
 });
 
 
-
+removeItemsOrder()
 

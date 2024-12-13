@@ -47,7 +47,7 @@ function addItemList(itemSelected, quantity, numberOrder) {
 
                 setTimeout(() => {
                   location.reload()
-                }, 600);
+                }, 200);
               }
             }
         reduceStock()
