@@ -4,89 +4,899 @@
     "idcompanies": 1,
     "idproduct": 501,
     "amount": 10000,
-    "nameitem": "Produto A",
-    "itemdescript": "Produto eletrônico de última geração",
-    "unitycost": 900
+    "nameitem": "martelo",
+    "itemdescript": "Ferramenta para bater pregos e outros materiais",
+    "unitycost": 15
   },
   {
     "id": 2,
     "idcompanies": 1,
     "idproduct": 502,
-    "amount": 5,
-    "nameitem": "Produto B",
-    "itemdescript": "Produto para casa inteligente",
-    "unitycost": 2
+    "amount": 10000,
+    "nameitem": "marreta",
+    "itemdescript": "Ferramenta usada para quebrar pedras e concreto",
+    "unitycost": 30
   },
   {
     "id": 3,
     "idcompanies": 1,
     "idproduct": 503,
-    "amount": 900,
-    "nameitem": "Produto C",
-    "itemdescript": "Acessório para smartphone",
-    "unitycost": 90
+    "amount": 10000,
+    "nameitem": "serrote",
+    "itemdescript": "Ferramenta para cortar madeira e outros materiais",
+    "unitycost": 25
   },
   {
     "id": 4,
     "idcompanies": 1,
     "idproduct": 504,
-    "amount": 300,
-    "nameitem": "Produto D",
-    "itemdescript": "Fone de ouvido sem fio",
-    "unitycost": 30
+    "amount": 10000,
+    "nameitem": "prego",
+    "itemdescript": "Peça metálica usada para fixação",
+    "unitycost": 0.05
   },
   {
     "id": 5,
     "idcompanies": 1,
     "idproduct": 505,
-    "amount": 50,
-    "nameitem": "Produto E",
-    "itemdescript": "Cabo de carregamento rápido",
-    "unitycost": 50
+    "amount": 10000,
+    "nameitem": "alicate",
+    "itemdescript": "Ferramenta usada para cortar, apertar ou segurar objetos",
+    "unitycost": 20
   },
   {
     "id": 6,
     "idcompanies": 1,
-    "idproduct": 601,
-    "amount": 100,
-    "nameitem": "Produto F",
-    "itemdescript": "Câmera de segurança para ambientes internos",
-    "unitycost": 20
+    "idproduct": 506,
+    "amount": 10000,
+    "nameitem": "chave inglesa",
+    "itemdescript": "Ferramenta ajustável para apertar ou soltar porcas e parafusos",
+    "unitycost": 18
   },
   {
     "id": 7,
     "idcompanies": 1,
-    "idproduct": 602,
-    "amount": 250,
-    "nameitem": "Produto G",
-    "itemdescript": "Sistema de alarme sem fio",
-    "unitycost": 220
+    "idproduct": 507,
+    "amount": 10000,
+    "nameitem": "pá",
+    "itemdescript": "Ferramenta utilizada para cavar, mover e transportar materiais",
+    "unitycost": 12
   },
   {
     "id": 8,
     "idcompanies": 1,
-    "idproduct": 603,
-    "amount": 400,
-    "nameitem": "Produto H",
-    "itemdescript": "Monitor de segurança com visão noturna",
-    "unitycost": 78
+    "idproduct": 508,
+    "amount": 10000,
+    "nameitem": "régua",
+    "itemdescript": "Instrumento utilizado para medir e traçar linhas retas",
+    "unitycost": 8
   },
   {
     "id": 9,
     "idcompanies": 1,
-    "idproduct": 604,
-    "amount": 180,
-    "nameitem": "Produto I",
-    "itemdescript": "Sensor de movimento para alarmes",
-    "unitycost": 38
+    "idproduct": 509,
+    "amount": 10000,
+    "nameitem": "espátula",
+    "itemdescript": "Ferramenta plana utilizada para espalhar ou raspar materiais",
+    "unitycost": 5
   },
   {
     "id": 10,
     "idcompanies": 1,
-    "idproduct": 605,
-    "amount": 80,
-    "nameitem": "Produto J",
-    "itemdescript": "Controle remoto para câmeras de segurança",
+    "idproduct": 510,
+    "amount": 10000,
+    "nameitem": "nivelador",
+    "itemdescript": "Instrumento usado para verificar se uma superfície está nivelada",
+    "unitycost": 7
+  },
+  {
+    "id": 11,
+    "idcompanies": 1,
+    "idproduct": 511,
+    "amount": 10000,
+    "nameitem": "cimento",
+    "itemdescript": "Material de construção usado como base para várias obras",
+    "unitycost": 25
+  },
+  {
+    "id": 12,
+    "idcompanies": 1,
+    "idproduct": 512,
+    "amount": 10000,
+    "nameitem": "areia",
+    "itemdescript": "Material granular usado em concreto, argamassa e outros produtos",
+    "unitycost": 10
+  },
+  {
+    "id": 13,
+    "idcompanies": 1,
+    "idproduct": 513,
+    "amount": 10000,
+    "nameitem": "cal",
+    "itemdescript": "Substância usada na preparação de argamassa e como fundente",
+    "unitycost": 15
+  },
+  {
+    "id": 14,
+    "idcompanies": 1,
+    "idproduct": 514,
+    "amount": 10000,
+    "nameitem": "argamassa",
+    "itemdescript": "Mistura de cimento, areia e água para fixação de tijolos e pisos",
+    "unitycost": 20
+  },
+  {
+    "id": 15,
+    "idcompanies": 1,
+    "idproduct": 515,
+    "amount": 10000,
+    "nameitem": "tijolo",
+    "itemdescript": "Bloco de construção usado para a criação de paredes e outras estruturas",
+    "unitycost": 1
+  },
+  {
+    "id": 16,
+    "idcompanies": 1,
+    "idproduct": 516,
+    "amount": 10000,
+    "nameitem": "bloco",
+    "itemdescript": "Bloco de concreto usado em construções de paredes e muros",
+    "unitycost": 2
+  },
+  {
+    "id": 17,
+    "idcompanies": 1,
+    "idproduct": 517,
+    "amount": 10000,
+    "nameitem": "ferro",
+    "itemdescript": "Material usado como estrutura em construções de concreto armado",
+    "unitycost": 6
+  },
+  {
+    "id": 18,
+    "idcompanies": 1,
+    "idproduct": 518,
+    "amount": 10000,
+    "nameitem": "cimento colante",
+    "itemdescript": "Cimento usado para colagem de pisos e revestimentos cerâmicos",
+    "unitycost": 22
+  },
+  {
+    "id": 19,
+    "idcompanies": 1,
+    "idproduct": 519,
+    "amount": 10000,
+    "nameitem": "massa corrida",
+    "itemdescript": "Produto utilizado para o acabamento de paredes e tetos",
     "unitycost": 14
+  },
+  {
+    "id": 20,
+    "idcompanies": 1,
+    "idproduct": 520,
+    "amount": 10000,
+    "nameitem": "pedra",
+    "itemdescript": "Material natural usado para pavimentação e construção de muros",
+    "unitycost": 30
+  },
+  {
+    "id": 21,
+    "idcompanies": 1,
+    "idproduct": 521,
+    "amount": 10000,
+    "nameitem": "buxa",
+    "itemdescript": "Elemento utilizado em construção para fixação de parafusos em paredes",
+    "unitycost": 1
+  },
+  {
+    "id": 22,
+    "idcompanies": 1,
+    "idproduct": 522,
+    "amount": 10000,
+    "nameitem": "cadeado",
+    "itemdescript": "Dispositivo de segurança usado para trancar portas e portões",
+    "unitycost": 12
+  },
+  {
+    "id": 23,
+    "idcompanies": 1,
+    "idproduct": 523,
+    "amount": 10000,
+    "nameitem": "fita isolante",
+    "itemdescript": "Fita usada para isolamento elétrico e proteção de fios",
+    "unitycost": 3
+  },
+  {
+    "id": 24,
+    "idcompanies": 1,
+    "idproduct": 524,
+    "amount": 10000,
+    "nameitem": "fita métrica",
+    "itemdescript": "Instrumento utilizado para medir distâncias",
+    "unitycost": 7
+  },
+  {
+    "id": 25,
+    "idcompanies": 1,
+    "idproduct": 525,
+    "amount": 10000,
+    "nameitem": "tarugo",
+    "itemdescript": "Peça de madeira ou metal usada para reforço em construções",
+    "unitycost": 5
+  },
+  {
+    "id": 26,
+    "idcompanies": 1,
+    "idproduct": 526,
+    "amount": 10000,
+    "nameitem": "para-fuso",
+    "itemdescript": "Peça de metal usada para fixação de objetos com rosca",
+    "unitycost": 0.10
+  },
+  {
+    "id": 27,
+    "idcompanies": 1,
+    "idproduct": 527,
+    "amount": 10000,
+    "nameitem": "parafuso",
+    "itemdescript": "Elemento de fixação com rosca utilizado para unir peças",
+    "unitycost": 0.30
+  },
+  {
+    "id": 28,
+    "idcompanies": 1,
+    "idproduct": 528,
+    "amount": 10000,
+    "nameitem": "bucha",
+    "itemdescript": "Peça utilizada para fixar parafusos em paredes ou superfícies frágeis",
+    "unitycost": 0.25
+  },
+  {
+    "id": 29,
+    "idcompanies": 1,
+    "idproduct": 529,
+    "amount": 10000,
+    "nameitem": "tinta",
+    "itemdescript": "Produto utilizado para pintar superfícies e dar acabamento",
+    "unitycost": 20
+  },
+  {
+    "id": 30,
+    "idcompanies": 1,
+    "idproduct": 530,
+    "amount": 10000,
+    "nameitem": "rolo",
+    "itemdescript": "Ferramenta utilizada para aplicar tinta ou outros revestimentos",
+    "unitycost": 8
+  },
+  {
+    "id": 31,
+    "idcompanies": 1,
+    "idproduct": 531,
+    "amount": 10000,
+    "nameitem": "betoneira",
+    "itemdescript": "Máquina usada para misturar concreto em grandes quantidades",
+    "unitycost": 1200
+  },
+  {
+    "id": 32,
+    "idcompanies": 1,
+    "idproduct": 532,
+    "amount": 10000,
+    "nameitem": "serra circular",
+    "itemdescript": "Ferramenta elétrica usada para cortar madeira e outros materiais",
+    "unitycost": 350
+  },
+  {
+    "id": 33,
+    "idcompanies": 1,
+    "idproduct": 533,
+    "amount": 10000,
+    "nameitem": "furadeira",
+    "itemdescript": "Ferramenta elétrica usada para fazer furos em diferentes materiais",
+    "unitycost": 200
+  },
+  {
+    "id": 34,
+    "idcompanies": 1,
+    "idproduct": 534,
+    "amount": 10000,
+    "nameitem": "esmerilhadeira",
+    "itemdescript": "Ferramenta elétrica usada para cortar e desbastar metais",
+    "unitycost": 250
+  },
+  {
+    "id": 35,
+    "idcompanies": 1,
+    "idproduct": 535,
+    "amount": 10000,
+    "nameitem": "lixadeira",
+    "itemdescript": "Ferramenta elétrica usada para lixar superfícies",
+    "unitycost": 150
+  },
+  {
+    "id": 36,
+    "idcompanies": 1,
+    "idproduct": 536,
+    "amount": 10000,
+    "nameitem": "perfurador",
+    "itemdescript": "Ferramenta usada para perfurar materiais como madeira e concreto",
+    "unitycost": 180
+  },
+  {
+    "id": 37,
+    "idcompanies": 1,
+    "idproduct": 537,
+    "amount": 10000,
+    "nameitem": "pistola de pintura",
+    "itemdescript": "Ferramenta usada para aplicar tinta de forma mais eficiente",
+    "unitycost": 400
+  },
+  {
+    "id": 38,
+    "idcompanies": 1,
+    "idproduct": 538,
+    "amount": 10000,
+    "nameitem": "compressor",
+    "itemdescript": "Equipamento utilizado para fornecer ar comprimido em diversos processos",
+    "unitycost": 600
+  },
+  {
+    "id": 39,
+    "idcompanies": 1,
+    "idproduct": 539,
+    "amount": 10000,
+    "nameitem": "pincel",
+    "itemdescript": "Ferramenta usada para aplicar tinta ou outros produtos em superfícies",
+    "unitycost": 10
+  },
+  {
+    "id": 40,
+    "idcompanies": 1,
+    "idproduct": 540,
+    "amount": 10000,
+    "nameitem": "lona",
+    "itemdescript": "Material usado para cobrir e proteger áreas durante construção",
+    "unitycost": 30
+  },
+  {
+    "id": 41,
+    "idcompanies": 1,
+    "idproduct": 541,
+    "amount": 10000,
+    "nameitem": "talocha",
+    "itemdescript": "Ferramenta utilizada para aplicar e alisar argamassa",
+    "unitycost": 35
+  },
+  {
+    "id": 42,
+    "idcompanies": 1,
+    "idproduct": 542,
+    "amount": 10000,
+    "nameitem": "escada",
+    "itemdescript": "Estrutura para alcançar lugares elevados com segurança",
+    "unitycost": 120
+  },
+  {
+    "id": 43,
+    "idcompanies": 1,
+    "idproduct": 543,
+    "amount": 10000,
+    "nameitem": "gesso",
+    "itemdescript": "Material utilizado para acabamento de paredes e tetos",
+    "unitycost": 50
+  },
+  {
+    "id": 44,
+    "idcompanies": 1,
+    "idproduct": 544,
+    "amount": 10000,
+    "nameitem": "cimento queimado",
+    "itemdescript": "Tipo de acabamento feito com cimento polido",
+    "unitycost": 60
+  },
+  {
+    "id": 45,
+    "idcompanies": 1,
+    "idproduct": 545,
+    "amount": 10000,
+    "nameitem": "mangueira",
+    "itemdescript": "Tubulação flexível usada para transportar líquidos ou gases",
+    "unitycost": 25
+  },
+  {
+    "id": 46,
+    "idcompanies": 1,
+    "idproduct": 546,
+    "amount": 10000,
+    "nameitem": "pedreiro",
+    "itemdescript": "Profissional que trabalha na construção de alvenarias",
+    "unitycost": 150
+  },
+  {
+    "id": 47,
+    "idcompanies": 1,
+    "idproduct": 547,
+    "amount": 10000,
+    "nameitem": "tinta epóxi",
+    "itemdescript": "Tinta resistente, usada para pisos e ambientes com alta umidade",
+    "unitycost": 50
+  },
+  {
+    "id": 48,
+    "idcompanies": 1,
+    "idproduct": 548,
+    "amount": 10000,
+    "nameitem": "tabua",
+    "itemdescript": "Peça de madeira utilizada em construção ou como revestimento",
+    "unitycost": 40
+  },
+  {
+    "id": 49,
+    "idcompanies": 1,
+    "idproduct": 549,
+    "amount": 10000,
+    "nameitem": "vinil",
+    "itemdescript": "Material plástico utilizado para revestimento de pisos",
+    "unitycost": 45
+  },
+  {
+    "id": 50,
+    "idcompanies": 1,
+    "idproduct": 550,
+    "amount": 10000,
+    "nameitem": "papel kraft",
+    "itemdescript": "Material de embalagem resistente e durável",
+    "unitycost": 2
+  },
+  {
+    "id": 51,
+    "idcompanies": 1,
+    "idproduct": 551,
+    "amount": 10000,
+    "nameitem": "argamassa colante",
+    "itemdescript": "Argamassa usada para colar cerâmicas, porcelanatos e pisos",
+    "unitycost": 35
+  },
+  {
+    "id": 52,
+    "idcompanies": 1,
+    "idproduct": 552,
+    "amount": 10000,
+    "nameitem": "ferro galvanizado",
+    "itemdescript": "Ferro tratado com zinco para evitar corrosão",
+    "unitycost": 50
+  },
+  {
+    "id": 53,
+    "idcompanies": 1,
+    "idproduct": 553,
+    "amount": 10000,
+    "nameitem": "cimento queimado",
+    "itemdescript": "Acabamento de piso feito com cimento polido",
+    "unitycost": 45
+  },
+  {
+    "id": 54,
+    "idcompanies": 1,
+    "idproduct": 554,
+    "amount": 10000,
+    "nameitem": "granito",
+    "itemdescript": "Pedra natural usada em pisos, bancadas e revestimentos",
+    "unitycost": 80
+  },
+  {
+    "id": 55,
+    "idcompanies": 1,
+    "idproduct": 555,
+    "amount": 10000,
+    "nameitem": "piso cerâmico",
+    "itemdescript": "Revestimento de piso feito de cerâmica, usado em áreas internas",
+    "unitycost": 25
+  },
+  {
+    "id": 56,
+    "idcompanies": 1,
+    "idproduct": 556,
+    "amount": 10000,
+    "nameitem": "tijolo refratário",
+    "itemdescript": "Tijolo resistente a altas temperaturas, utilizado em fornos e lareiras",
+    "unitycost": 3
+  },
+  {
+    "id": 57,
+    "idcompanies": 1,
+    "idproduct": 557,
+    "amount": 10000,
+    "nameitem": "telha",
+    "itemdescript": "Material usado na cobertura de telhados, geralmente de barro ou cerâmica",
+    "unitycost": 7
+  },
+  {
+    "id": 58,
+    "idcompanies": 1,
+    "idproduct": 558,
+    "amount": 10000,
+    "nameitem": "vergalhão",
+    "itemdescript": "Barra de aço usada para reforço em concreto",
+    "unitycost": 25
+  },
+  {
+    "id": 59,
+    "idcompanies": 1,
+    "idproduct": 559,
+    "amount": 10000,
+    "nameitem": "manta asfáltica",
+    "itemdescript": "Material impermeabilizante usado em coberturas e fundações",
+    "unitycost": 50
+  },
+  {
+    "id": 60,
+    "idcompanies": 1,
+    "idproduct": 560,
+    "amount": 10000,
+    "nameitem": "impermeabilizante",
+    "itemdescript": "Produto aplicado para evitar infiltrações em paredes e pisos",
+    "unitycost": 20
+  },
+  {
+    "id": 61,
+    "idcompanies": 1,
+    "idproduct": 561,
+    "amount": 10000,
+    "nameitem": "fibra de vidro",
+    "itemdescript": "Material utilizado em isolamentos térmicos e acústicos",
+    "unitycost": 15
+  },
+  {
+    "id": 62,
+    "idcompanies": 1,
+    "idproduct": 562,
+    "amount": 10000,
+    "nameitem": "gesso acartonado",
+    "itemdescript": "Material usado para forros e divisórias internas",
+    "unitycost": 35
+  },
+  {
+    "id": 63,
+    "idcompanies": 1,
+    "idproduct": 563,
+    "amount": 10000,
+    "nameitem": "parafuso sextavado",
+    "itemdescript": "Parafuso de cabeça sextavada, usado para fixação de peças",
+    "unitycost": 0.5
+  },
+  {
+    "id": 64,
+    "idcompanies": 1,
+    "idproduct": 564,
+    "amount": 10000,
+    "nameitem": "canaleta elétrica",
+    "itemdescript": "Canaleta usada para embutir fiação elétrica em construções",
+    "unitycost": 10
+  },
+  {
+    "id": 65,
+    "idcompanies": 1,
+    "idproduct": 565,
+    "amount": 10000,
+    "nameitem": "mola",
+    "itemdescript": "Componente mecânico utilizado para absorver choques e vibrações",
+    "unitycost": 8
+  },
+  {
+    "id": 66,
+    "idcompanies": 1,
+    "idproduct": 566,
+    "amount": 10000,
+    "nameitem": "tampa de PVC",
+    "itemdescript": "Tampa de plástico utilizada para fechar canos e conexões",
+    "unitycost": 4
+  },
+  {
+    "id": 67,
+    "idcompanies": 1,
+    "idproduct": 567,
+    "amount": 10000,
+    "nameitem": "piso laminado",
+    "itemdescript": "Piso sintético que imita madeira, ideal para interiores",
+    "unitycost": 40
+  },
+  {
+    "id": 68,
+    "idcompanies": 1,
+    "idproduct": 568,
+    "amount": 10000,
+    "nameitem": "banco de obra",
+    "itemdescript": "Estrutura de metal ou madeira usada para assentar trabalhadores em obras",
+    "unitycost": 80
+  },
+  {
+    "id": 69,
+    "idcompanies": 1,
+    "idproduct": 569,
+    "amount": 10000,
+    "nameitem": "andame",
+    "itemdescript": "Estrutura usada para permitir o acesso a áreas elevadas em obras",
+    "unitycost": 250
+  },
+  {
+    "id": 70,
+    "idcompanies": 1,
+    "idproduct": 570,
+    "amount": 10000,
+    "nameitem": "painel de OSB",
+    "itemdescript": "Painel de madeira reconstituída, usado em forros e pisos",
+    "unitycost": 60
+  },
+  {
+    "id": 71,
+    "idcompanies": 1,
+    "idproduct": 571,
+    "amount": 10000,
+    "nameitem": "tinta látex",
+    "itemdescript": "Tinta à base de água utilizada para pintar paredes e tetos",
+    "unitycost": 25
+  },
+  {
+    "id": 72,
+    "idcompanies": 1,
+    "idproduct": 572,
+    "amount": 10000,
+    "nameitem": "canaleta metálica",
+    "itemdescript": "Canaleta de metal utilizada para passagem de fiação elétrica",
+    "unitycost": 12
+  },
+  {
+    "id": 73,
+    "idcompanies": 1,
+    "idproduct": 573,
+    "amount": 10000,
+    "nameitem": "prumo",
+    "itemdescript": "Instrumento utilizado para verificar a verticalidade de uma parede",
+    "unitycost": 5
+  },
+  {
+    "id": 74,
+    "idcompanies": 1,
+    "idproduct": 574,
+    "amount": 10000,
+    "nameitem": "cinta de aço",
+    "itemdescript": "Fita metálica usada para reforço de estruturas de concreto",
+    "unitycost": 20
+  },
+  {
+    "id": 75,
+    "idcompanies": 1,
+    "idproduct": 575,
+    "amount": 10000,
+    "nameitem": "argamassa polimérica",
+    "itemdescript": "Argamassa com aditivos para melhorar a aderência e resistência",
+    "unitycost": 40
+  },
+  {
+    "id": 76,
+    "idcompanies": 1,
+    "idproduct": 576,
+    "amount": 10000,
+    "nameitem": "vidro temperado",
+    "itemdescript": "Vidro tratado para aumentar sua resistência e segurança",
+    "unitycost": 100
+  },
+  {
+    "id": 77,
+    "idcompanies": 1,
+    "idproduct": 577,
+    "amount": 10000,
+    "nameitem": "madeira compensada",
+    "itemdescript": "Madeira de várias lâminas coladas, usada em forros e pisos",
+    "unitycost": 50
+  },
+  {
+    "id": 78,
+    "idcompanies": 1,
+    "idproduct": 578,
+    "amount": 10000,
+    "nameitem": "rolo de lã de vidro",
+    "itemdescript": "Material isolante térmico e acústico usado em construções",
+    "unitycost": 20
+  },
+  {
+    "id": 79,
+    "idcompanies": 1,
+    "idproduct": 579,
+    "amount": 10000,
+    "nameitem": "cimento queimado",
+    "itemdescript": "Acabamento de piso feito com cimento polido",
+    "unitycost": 45
+  },
+  {
+    "id": 80,
+    "idcompanies": 1,
+    "idproduct": 580,
+    "amount": 10000,
+    "nameitem": "cimento de alta resistência",
+    "itemdescript": "Cimento com maior resistência para obras estruturais",
+    "unitycost": 30
+  },
+  {
+    "id": 81,
+    "idcompanies": 1,
+    "idproduct": 581,
+    "amount": 10000,
+    "nameitem": "tijolo maciço",
+    "itemdescript": "Tijolo de barro maciço usado em alvenarias",
+    "unitycost": 1.50
+  },
+  {
+    "id": 82,
+    "idcompanies": 1,
+    "idproduct": 582,
+    "amount": 10000,
+    "nameitem": "tijolo ecológico",
+    "itemdescript": "Tijolo produzido com materiais reciclados e menor impacto ambiental",
+    "unitycost": 2.50
+  },
+  {
+    "id": 83,
+    "idcompanies": 1,
+    "idproduct": 583,
+    "amount": 10000,
+    "nameitem": "tinta epóxi",
+    "itemdescript": "Tinta resistente para superfícies sujeitas a desgaste intenso",
+    "unitycost": 70
+  },
+  {
+    "id": 84,
+    "idcompanies": 1,
+    "idproduct": 584,
+    "amount": 10000,
+    "nameitem": "tijolo cerâmico",
+    "itemdescript": "Tijolo fabricado a partir de argila e utilizado em alvenarias",
+    "unitycost": 1.20
+  },
+  {
+    "id": 85,
+    "idcompanies": 1,
+    "idproduct": 585,
+    "amount": 10000,
+    "nameitem": "cimento branco",
+    "itemdescript": "Cimento de cor branca usado em acabamentos e revestimentos",
+    "unitycost": 35
+  },
+  {
+    "id": 86,
+    "idcompanies": 1,
+    "idproduct": 586,
+    "amount": 10000,
+    "nameitem": "cimento pozolânico",
+    "itemdescript": "Cimento usado em construções expostas a agentes agressivos",
+    "unitycost": 40
+  },
+  {
+    "id": 87,
+    "idcompanies": 1,
+    "idproduct": 587,
+    "amount": 10000,
+    "nameitem": "madeira de lei",
+    "itemdescript": "Madeira de alta qualidade e durabilidade, usada para construção e móveis",
+    "unitycost": 100
+  },
+  {
+    "id": 88,
+    "idcompanies": 1,
+    "idproduct": 588,
+    "amount": 10000,
+    "nameitem": "cimento expansivo",
+    "itemdescript": "Cimento usado para escavação e demolição controlada",
+    "unitycost": 60
+  },
+  {
+    "id": 89,
+    "idcompanies": 1,
+    "idproduct": 589,
+    "amount": 10000,
+    "nameitem": "gesso comum",
+    "itemdescript": "Gesso usado para acabamento de paredes e tetos",
+    "unitycost": 18
+  },
+  {
+    "id": 90,
+    "idcompanies": 1,
+    "idproduct": 590,
+    "amount": 10000,
+    "nameitem": "cimento Portland",
+    "itemdescript": "Cimento utilizado em construção civil para a produção de concreto",
+    "unitycost": 25
+  },
+  {
+    "id": 91,
+    "idcompanies": 1,
+    "idproduct": 591,
+    "amount": 10000,
+    "nameitem": "isolante térmico",
+    "itemdescript": "Material usado para isolar termicamente superfícies",
+    "unitycost": 30
+  },
+  {
+    "id": 92,
+    "idcompanies": 1,
+    "idproduct": 592,
+    "amount": 10000,
+    "nameitem": "bloco de concreto",
+    "itemdescript": "Bloco de concreto utilizado na construção de alvenarias",
+    "unitycost": 5
+  },
+  {
+    "id": 93,
+    "idcompanies": 1,
+    "idproduct": 593,
+    "amount": 10000,
+    "nameitem": "areia grossa",
+    "itemdescript": "Areia usada na construção civil para fazer concreto",
+    "unitycost": 12
+  },
+  {
+    "id": 94,
+    "idcompanies": 1,
+    "idproduct": 594,
+    "amount": 10000,
+    "nameitem": "gesso 3D",
+    "itemdescript": "Gesso decorativo usado para criar texturas nas paredes",
+    "unitycost": 50
+  },
+  {
+    "id": 95,
+    "idcompanies": 1,
+    "idproduct": 595,
+    "amount": 10000,
+    "nameitem": "cimento rápido",
+    "itemdescript": "Cimento que seca rapidamente, ideal para reparos rápidos",
+    "unitycost": 20
+  },
+  {
+    "id": 96,
+    "idcompanies": 1,
+    "idproduct": 596,
+    "amount": 10000,
+    "nameitem": "parafuso chapa",
+    "itemdescript": "Parafuso utilizado para fixar chapas metálicas e outros materiais",
+    "unitycost": 1
+  },
+  {
+    "id": 97,
+    "idcompanies": 1,
+    "idproduct": 597,
+    "amount": 10000,
+    "nameitem": "tijolo auto-falante",
+    "itemdescript": "Tijolo utilizado em construção de estúdios e câmaras acústicas",
+    "unitycost": 3.50
+  },
+  {
+    "id": 98,
+    "idcompanies": 1,
+    "idproduct": 598,
+    "amount": 10000,
+    "nameitem": "placa de gesso",
+    "itemdescript": "Placa de gesso usada para forro e divisórias internas",
+    "unitycost": 15
+  },
+  {
+    "id": 99,
+    "idcompanies": 1,
+    "idproduct": 599,
+    "amount": 10000,
+    "nameitem": "telha de fibrocimento",
+    "itemdescript": "Telha composta por fibrocimento, usada para coberturas de galpões",
+    "unitycost": 10
+  },
+  {
+    "id": 100,
+    "idcompanies": 1,
+    "idproduct": 600,
+    "amount": 10000,
+    "nameitem": "rede elétrica",
+    "itemdescript": "Sistema de distribuição de energia elétrica em construções",
+    "unitycost": 5
   }
-]
+  ]

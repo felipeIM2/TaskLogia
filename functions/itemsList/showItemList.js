@@ -124,8 +124,8 @@ function showItemList(itemsOrderCompanie, list, getUser) {
         }
        addStock()
 
-        // setDataStock(findItem)
-        // removeItem(item)
+        setDataStock(findItem)
+        removeItem(item)
 
       })
 
