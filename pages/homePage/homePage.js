@@ -324,7 +324,8 @@
       orderDetail.style.minWidth = "100px";
       orderDetail.style.paddingRight = "20px";
       statusCell.style.width = "155px";
-
+      statusCell.style.fontSize = "15px";
+     
       if (statusName.length > 0) {
         const statusColor = getStatusColor(statusName[0].idstatus);
         statusBackground.style.backgroundColor = statusColor.bgColor;
@@ -475,3 +476,6 @@ document.addEventListener("click", (event) => {
 
 removeItemsOrder()
 
+  document.getElementById("initOrder").addEventListener("click", () => {
+    console.log("order")
+  })

@@ -638,3 +638,9 @@ td {
 .dropdown-menuON input {
   margin-right: 10px; /* Ajusta o espaço entre o checkbox e o texto */
 }
+
+#leftBar {
+  height: 450px; /* altura fixa */
+  overflow-y: auto; /* scroll vertical */
+}
+
