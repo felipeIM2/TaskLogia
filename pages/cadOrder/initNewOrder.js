@@ -39,8 +39,11 @@
       return res.json();
     })
     .then(dataOrder => {
+     
       let encryptedOrderCompanie = CryptoJS.AES.encrypt(JSON.stringify(dataOrder), secretKey).toString();
       localStorage.setItem("order", encryptedOrderCompanie);
+      verifyLastOrder(dataOrder)
+      
     })
     .catch(error => {
       console.error('Erro ao carregar o JSON:', error);
@@ -66,12 +69,28 @@
 
     
      let confirmLastOrder = sessionStorage.getItem("lastOrder") 
-     let showNumber = document.getElementById("numberOrder")
-     showNumber.innerText = `N° ${confirmLastOrder}`
+    //  let showNumber = document.getElementById("numberOrder")
+    //  showNumber.innerText = `N° ${confirmLastOrder}`
+
+      function verifyLastOrder(dataOrder){
+
+        if(dataOrder){
+          let lastOrderdb = dataOrder.map(v => v.numberorder)
+          // console.log(lastOrderdb[lastOrderdb.length - 1]) 
+          if(confirmLastOrder === null || confirmLastOrder === undefined){
+              if(lastOrderdb != '') {
+                sessionStorage.setItem("lastOrder", lastOrderdb[lastOrderdb.length - 1] + 1)
+                location.reload()
+              }else {
+                console.log('aqui')
+                sessionStorage.setItem("lastOrder", 1001)
+                location.reload()
+              }
+          }
+        }
+     } verifyLastOrder()
   
-    if(confirmLastOrder === null || confirmLastOrder === undefined){
-      sessionStorage.setItem("lastOrder", 1001)
-    }
+  
 
     document.getElementById("textArea").value = ''
 

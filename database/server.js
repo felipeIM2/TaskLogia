@@ -199,6 +199,20 @@ app.post("/editOrder", async (req, res) => {
     }
   });
 
+  app.post("/reciveOrderEdit", async (req, res) => {
+    const data = req.body;
+    try {
+      const order = await prisma.orderEdit.create({
+        data: data
+      });
+      console.log(data)
+      return res.json({ mensagem: "Dados recebidos e salvos com sucesso!", order });
+    } catch (err) {
+      console.error('Erro ao salvar no banco:', err);
+      return res.status(500).json({ mensagem: "Erro ao salvar os dados." });
+    }
+  });
+
 
 // ----------------------------------------------GET DATABASE------------------------------------------------------
  
@@ -258,6 +272,16 @@ app.post("/editOrder", async (req, res) => {
     try {
       const orderStatus = await prisma.orderStatus.findMany();
       return res.json(orderStatus);
+    } catch (err) {
+      console.error('Erro ao buscar pedidos:', err);
+      return res.status(500).json({ mensagem: "Erro ao buscar pedidos." });
+    }
+  });
+
+  app.get("/orderEdit", async (req, res) => {
+    try {
+      const orderEdit = await prisma.orderEdit.findMany();
+      return res.json(orderEdit);
     } catch (err) {
       console.error('Erro ao buscar pedidos:', err);
       return res.status(500).json({ mensagem: "Erro ao buscar pedidos." });

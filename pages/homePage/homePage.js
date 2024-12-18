@@ -9,6 +9,7 @@
   import statusDelet from '../../functions/modifyStatus/statusDelet.js';
   import statusEdit from '../../functions/modifyStatus/statusEdit.js'
   import updatePagination from '../../functions/pagination.js';
+  import setOrderInEdit from '../../middlewares/setOrderEdit.js';
   import apiGet from '../../api/apiGet.js';
 
   const secretKey = "12345678901";
@@ -477,5 +478,29 @@ document.addEventListener("click", (event) => {
 removeItemsOrder()
 
   document.getElementById("initOrder").addEventListener("click", () => {
-    console.log("order")
+    // fetch('http://localhost:3000/orderEdit')
+    // .then(res => {
+    //   if (!res.ok) {
+    //     throw new Error('Rede falhou: ' + res.status);
+    //   }
+    //   return res.json();
+    // })
+    // .then(data => {
+    
+    //   console.log(data)
+      
+    // })
+    // .catch(error => {
+    //   console.error('Erro ao carregar o JSON:', error);
+    // });
+
+  let lastorder = sessionStorage.getItem("lastOrder")
+  let getUser = JSON.parse(sessionStorage.getItem("user"))
+
+    let orderEditStatusData = [{
+      "idcompanies": Number(getUser.idcompanies),
+      "numberorder": Number(lastorder),
+      "statusorder": 1
+    }]
+      setOrderInEdit(orderEditStatusData)
   })

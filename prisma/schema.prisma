@@ -71,3 +71,10 @@ model Stock {
   unitycost    Float
 }
 
+
+model OrderEdit {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  idcompanies Int
+  numberorder Int
+  statusorder Int
+}

@@ -1,22 +1,7 @@
 [
   {
-    "id": 1,
-    "idemployee": 1522,
-    "idstatus": 1,
     "idcompanies": 1,
-    "name": "1",
     "numberorder": 1001,
-    "descript": "1",
-    "ordercost": 1
-  },
-  {
-    "id": 2,
-    "idemployee": 1522,
-    "idstatus": 1,
-    "idcompanies": 1,
-    "name": "teste ",
-    "numberorder": 1002,
-    "descript": "teste nova ordem",
-    "ordercost": 1
+    "statusorder": 1
   }
 ]

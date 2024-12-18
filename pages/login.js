@@ -67,7 +67,7 @@ const login = document.getElementById("login");
 
 )
 .catch(error => {
-  alert("Favor conectar ao banco de dados!!")
+  alert(`Favor conectar ao banco de dados!!  ${error}`)
   console.error('Erro ao carregar o JSON:', error);
 });
 
@@ -83,3 +83,5 @@ localStorage.removeItem("stock");
 localStorage.removeItem("checkOrderState");
 localStorage.removeItem("checkOrderDelay");
 localStorage.removeItem("orderStatus");
+localStorage.removeItem("order");
+localStorage.removeItem("checkAscNumberOrder");
