@@ -203,9 +203,14 @@ app.post("/editOrder", async (req, res) => {
     const data = req.body;
     try {
       const order = await prisma.orderEdit.create({
-        data: data
+        data:
+          {
+            idcompanies: data.idcompanies,
+            numberorder: data.numberorder,
+            statusorder: data.statusorder
+          }
       });
-      console.log(data)
+     // console.log(data.idcompanies)
       return res.json({ mensagem: "Dados recebidos e salvos com sucesso!", order });
     } catch (err) {
       console.error('Erro ao salvar no banco:', err);
