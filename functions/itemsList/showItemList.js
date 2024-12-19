@@ -2,13 +2,18 @@
 import removeItem from '../../middlewares/removeItem.js'
 import setDataStock from '../../middlewares/setNewStockdb.js';
 
-function showItemList(itemsOrderCompanie, list, getUser) {
+function showItemList(itemsOrderCompanie, list) {
+
+  let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrder2"))
+
 
   let lastOrder = Number(sessionStorage.getItem("lastOrder"));
-  if (!itemsOrderCompanie || itemsOrderCompanie.length === 0) return;
 
+  //if (!itemsOrderCompanie || itemsOrderCompanie.length === 0) return;
+
+  
   let filteredItems = itemsOrderCompanie.filter(v => v.numberorder === lastOrder);
-  if (filteredItems.length === 0) return;
+ // if (filteredItems.length === 0) return;
 
   let totalCost = 0;
 
@@ -16,10 +21,9 @@ function showItemList(itemsOrderCompanie, list, getUser) {
   list.innerHTML = '';
   
 
-  filteredItems.forEach(item => {
-
+  itemsOrder.forEach(item => {
    
-    
+     
     let tr = document.createElement("tr");
     tr.setAttribute("class", "line");
    

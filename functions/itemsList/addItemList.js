@@ -1,26 +1,38 @@
 
-import setdata from '../../middlewares/setNewItemOrder.js'
-import setDataStock from '../../middlewares/setNewStockdb.js';
+// import setdata from '../../middlewares/setNewItemOrder.js'
+// import setDataStock from '../../middlewares/setNewStockdb.js';
 
 function addItemList(itemSelected, quantity, numberOrder) {
 
 
   let item = JSON.parse(itemSelected)
 
-    
+
     function start(){
     
         let transform = {
           "id": item.id,
           "idproduct": item.idproduct,
           "idcompanies": item.idcompanies,
-          "numberorder": numberOrder,//(numberOrder[numberOrder.length - 1] === 0 || !numberOrder[numberOrder.length - 1]) ? 1001 : (numberOrder[numberOrder.length - 1] || 0) + 1,
+          // "numberorder": numberOrder,//(numberOrder[numberOrder.length - 1] === 0 || !numberOrder[numberOrder.length - 1]) ? 1001 : (numberOrder[numberOrder.length - 1] || 0) + 1,
           "amountorder": Number(quantity),
           "amountstock": item.amount,
           "nameitem": item.nameitem,
           "unitycost": item.unitycost
         };
-          
+
+    let itemsOrder = sessionStorage.getItem("itemsOrder2")
+      if(itemsOrder === ''){
+        itemsOrder = []
+        itemsOrder.push(transform)
+        sessionStorage.setItem("itemsOrder2", JSON.stringify(itemsOrder))
+      }else {
+        let itemsOrderJson = JSON.parse(sessionStorage.getItem("itemsOrder2"))
+        itemsOrderJson.push(transform)
+        sessionStorage.setItem("itemsOrder2", JSON.stringify(itemsOrderJson))
+      }
+
+
          
       fetch('http://localhost:3000/stock')
         .then(res => {
@@ -42,11 +54,11 @@ function addItemList(itemSelected, quantity, numberOrder) {
               } else {
                 findItem.amount = reduceStockItem
 
-                setDataStock(findItem)
-                setdata(transform)
+                // setDataStock(findItem)
+               
 
                 setTimeout(() => {
-                  location.reload()
+                  // location.reload()
                 }, 200);
               }
             }

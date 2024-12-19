@@ -8,7 +8,6 @@
   let getUser = JSON.parse(sessionStorage.getItem("user"));
   
    sessionStorage.setItem("seq", 1)
-
    
    fetch('http://localhost:3000/stock')
    .then(res => {
@@ -271,19 +270,10 @@
 
   document.getElementById("cleanList").addEventListener("click", () => {
     
-
-
-    let lastOrder = Number(sessionStorage.getItem("lastOrder"));
-
-    let deletAllItem = {
-        idcompanies: getUser.idcompanies, 
-        lastorder: lastOrder
-    };
-  
-    let itemsOrder = sessionStorage.getItem("itemsOrder")
-    let bytesItems = CryptoJS.AES.decrypt(itemsOrder, secretKey);
-    let dataItemsLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
-     //console.log(dataItemsLocal)
+    let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrder2"))
+    // let bytesItems = CryptoJS.AES.decrypt(itemsOrder, secretKey);
+    // let dataItemsLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
+     //console.log(itemsOrder)
 
     let itemsStock = localStorage.getItem("stock")
     let bytesStock = CryptoJS.AES.decrypt(itemsStock, secretKey);
@@ -292,19 +282,20 @@
     let stockCompanie = dataItemsStock.filter(v => v.idcompanies === getUser.idcompanies)
       
 
-   dataItemsLocal.forEach(value => {
+   itemsOrder.forEach(value => {
 
      let res = stockCompanie.find((v) => v.idproduct === value.idproduct)
-
+   
       if(res){
         res.amount =  (Number(res.amount) + Number(value.amountorder))
+        
       }
-     
-      setDataStock(res)
-      cleanAllItems(deletAllItem)
+    
+      //setDataStock(res)
+   
 
       setTimeout(() => {
-        location.reload()
+        //location.reload()
       }, 500);
 
     }) 

@@ -478,6 +478,7 @@ document.addEventListener("click", (event) => {
 removeItemsOrder()
 
   document.getElementById("initOrder").addEventListener("click", () => {
+
     // fetch('http://localhost:3000/orderEdit')
     // .then(res => {
     //   if (!res.ok) {
@@ -487,20 +488,39 @@ removeItemsOrder()
     // })
     // .then(data => {
     
-    //   console.log(data)
-      
+ 
+    //    let lastorder = sessionStorage.getItem("lastOrder")
+    //    let getUser = JSON.parse(sessionStorage.getItem("user"))
+
+    //   let findIndex = data.find(v => v.numberorder === Number(lastorder))
+    //    console.log(findIndex)
+    //   if(findIndex){
+
+    //     let orderEditStatusData = {
+    //       "idcompanies": Number(getUser.idcompanies),
+    //       "numberorder": Number(lastorder) + 1,
+    //       "statusorder": 1
+    //     }
+    //       setOrderInEdit(orderEditStatusData)
+
+    //   }else{
+
+    //       let orderEditStatusData = {
+    //         "idcompanies": Number(getUser.idcompanies),
+    //         "numberorder": Number(lastorder),
+    //         "statusorder": 1
+    //       }
+    //         setOrderInEdit(orderEditStatusData)
+    //   }
+
+    //   location.reload()
     // })
     // .catch(error => {
     //   console.error('Erro ao carregar o JSON:', error);
     // });
 
-  let lastorder = sessionStorage.getItem("lastOrder")
-  let getUser = JSON.parse(sessionStorage.getItem("user"))
-
-    let orderEditStatusData = [{
-      "idcompanies": Number(getUser.idcompanies),
-      "numberorder": Number(lastorder),
-      "statusorder": 1
-    }]
-      setOrderInEdit(orderEditStatusData)
+    let itemsOrder = []
+    sessionStorage.setItem("itemsOrder2", itemsOrder)  
+    
+    location.href = "../cadOrder/initOrder.html" 
   })
