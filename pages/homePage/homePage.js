@@ -517,7 +517,7 @@ document.addEventListener("click", (event) => {
         sessionStorage.setItem("itemsOrderEdit", itemsOrder)  
         location.href = "../cadOrder/initOrder.html";
 
-      }
+      }//update
 
   })
 
