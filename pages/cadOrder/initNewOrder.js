@@ -1,7 +1,7 @@
- 
+
   import addItemList from '../../functions/itemsList/addItemList.js';
   import showItemList from '../../functions/itemsList/showItemList.js';
-  import cleanAllItems from '../../middlewares/removeItemsAll.js'
+  //import cleanAllItems from '../../middlewares/removeItemsAll.js'
   import setDataStock from '../../middlewares/setNewStockdb.js'
   import setData from '../../middlewares/setNewOrderdb.js';
  
@@ -258,22 +258,19 @@
 
 
     let itemsOrderCompanie = dataItemsOrder.filter((v) => v.idcompanies === getUser.idcompanies);
-    //console.log(itemsOrderCompanie)
+    
     let list = document.getElementById("table")
     showItemList(itemsOrderCompanie, list, getUser)
 
   })
   .catch(error => {
-    console.error('Erro ao carregar o JSON:', error);
+   // console.error('Erro ao carregar o JSON:', error);
   });
 
 
   document.getElementById("cleanList").addEventListener("click", () => {
     
-    let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrder2"))
-    // let bytesItems = CryptoJS.AES.decrypt(itemsOrder, secretKey);
-    // let dataItemsLocal = JSON.parse(bytesItems.toString(CryptoJS.enc.Utf8));
-     //console.log(itemsOrder)
+    let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
 
     let itemsStock = localStorage.getItem("stock")
     let bytesStock = CryptoJS.AES.decrypt(itemsStock, secretKey);
@@ -285,21 +282,19 @@
    itemsOrder.forEach(value => {
 
      let res = stockCompanie.find((v) => v.idproduct === value.idproduct)
-   
+        
       if(res){
         res.amount =  (Number(res.amount) + Number(value.amountorder))
-        
       }
     
-      //setDataStock(res)
+      setDataStock(res)
    
-
       setTimeout(() => {
-        //location.reload()
+        location.reload()
       }, 500);
 
     }) 
-
+   sessionStorage.setItem("itemsOrderEdit", [])
   });
   
 

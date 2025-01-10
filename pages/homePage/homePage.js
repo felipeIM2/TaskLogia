@@ -1,5 +1,5 @@
   
-  import removeItemsOrder from '../../functions/cleanItemsOrder.js'
+ // import removeItemsOrder from '../../functions/cleanItemsOrder.js'
   import statusInit from '../../functions/modifyStatus/statusInit.js';
   import statusClose from '../../functions/modifyStatus/statusClose.js';
   import showDataCompanie from '../../functions/showDataCompanie.js'
@@ -9,7 +9,8 @@
   import statusDelet from '../../functions/modifyStatus/statusDelet.js';
   import statusEdit from '../../functions/modifyStatus/statusEdit.js'
   import updatePagination from '../../functions/pagination.js';
-  import setOrderInEdit from '../../middlewares/setOrderEdit.js';
+ //import setOrderInEdit from '../../middlewares/setOrderEdit.js';
+  import setDataStock from '../../middlewares/setNewStockdb.js'
   import apiGet from '../../api/apiGet.js';
 
   const secretKey = "12345678901";
@@ -475,52 +476,51 @@ document.addEventListener("click", (event) => {
 });
 
 
-removeItemsOrder()
+//removeItemsOrder()
 
   document.getElementById("initOrder").addEventListener("click", () => {
 
-    // fetch('http://localhost:3000/orderEdit')
-    // .then(res => {
-    //   if (!res.ok) {
-    //     throw new Error('Rede falhou: ' + res.status);
-    //   }
-    //   return res.json();
-    // })
-    // .then(data => {
-    
- 
-    //    let lastorder = sessionStorage.getItem("lastOrder")
-    //    let getUser = JSON.parse(sessionStorage.getItem("user"))
 
-    //   let findIndex = data.find(v => v.numberorder === Number(lastorder))
-    //    console.log(findIndex)
-    //   if(findIndex){
+    let itemsOrderEdit = sessionStorage.getItem("itemsOrderEdit")
 
-    //     let orderEditStatusData = {
-    //       "idcompanies": Number(getUser.idcompanies),
-    //       "numberorder": Number(lastorder) + 1,
-    //       "statusorder": 1
-    //     }
-    //       setOrderInEdit(orderEditStatusData)
+      if(itemsOrderEdit != ""){
 
-    //   }else{
+        let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
+        let getUser = JSON.parse(sessionStorage.getItem("user"));
+        let itemsStock = localStorage.getItem("stock")
+        let bytesStock = CryptoJS.AES.decrypt(itemsStock, secretKey);
+        let dataItemsStock = JSON.parse(bytesStock.toString(CryptoJS.enc.Utf8));
+      
+        let stockCompanie = dataItemsStock.filter(v => v.idcompanies === getUser.idcompanies)
+          
+      
+        itemsOrder.forEach(value => {
+      
+         let res = stockCompanie.find((v) => v.idproduct === value.idproduct)
+            
+          if(res){
+            res.amount =  (Number(res.amount) + Number(value.amountorder))
+          }
+            
+          setDataStock(res)
+        }) 
 
-    //       let orderEditStatusData = {
-    //         "idcompanies": Number(getUser.idcompanies),
-    //         "numberorder": Number(lastorder),
-    //         "statusorder": 1
-    //       }
-    //         setOrderInEdit(orderEditStatusData)
-    //   }
+         sessionStorage.setItem("itemsOrderEdit", [])
+         
+          setTimeout(() => {
+           location.href = "../cadOrder/initOrder.html";
+        }, 500);
 
-    //   location.reload()
-    // })
-    // .catch(error => {
-    //   console.error('Erro ao carregar o JSON:', error);
-    // });
+      }else {
 
-    let itemsOrder = []
-    sessionStorage.setItem("itemsOrder2", itemsOrder)  
-    
-    location.href = "../cadOrder/initOrder.html" 
+        let itemsOrder = []
+        sessionStorage.setItem("itemsOrderEdit", itemsOrder)  
+        location.href = "../cadOrder/initOrder.html";
+
+      }
+
   })
+
+
+
+

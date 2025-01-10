@@ -29,9 +29,15 @@ function dataCompanie(dataCompanies, getUser){
           const companieContactTd = document.getElementById("companieContactTd");
           const companieAdressTd = document.getElementById("companieAdressTd");
           
+          
           companieNameTd.innerText = companie[0].razaoSocial;
           companieCnpjTd.innerText = companie[0].cnpj;
-          companieIeTd.innerText = companie[0].inscricaoEstadual;
+          
+          if(companie[0].inscricaoEstadual === ""){
+            companieIeTd.innerText = "ISENTO";
+          }else {
+            companieIeTd.innerText = companie[0].inscricaoEstadual;
+          }
           companieContactTd.innerText = companie[0].contato.email;
           companieAdressTd.innerText = companie[0].endereco;
         

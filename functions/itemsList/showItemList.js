@@ -4,16 +4,12 @@ import setDataStock from '../../middlewares/setNewStockdb.js';
 
 function showItemList(itemsOrderCompanie, list) {
 
-  let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrder2"))
+  let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
 
 
   let lastOrder = Number(sessionStorage.getItem("lastOrder"));
 
   //if (!itemsOrderCompanie || itemsOrderCompanie.length === 0) return;
-
-  
-  let filteredItems = itemsOrderCompanie.filter(v => v.numberorder === lastOrder);
- // if (filteredItems.length === 0) return;
 
   let totalCost = 0;
 
@@ -84,61 +80,75 @@ function showItemList(itemsOrderCompanie, list) {
     list.appendChild(tr);
 
     totalCost += itemCost;
-
+     //console.log(item)
     i.setAttribute("id", item.id);
-    i.setAttribute("idcompanie", item.idcompanies);
     i.setAttribute("idproduct", item.idproduct);
     i.setAttribute("amountorder", item.amountorder);
-    i.setAttribute("number", item.numberorder); 
- 
-    let totalItems = filteredItems.length;
+
+
+    let itemsOrderCount = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
+    let totalItems = itemsOrderCount.length;
       document.getElementById("totalItems").innerText = `Total de itens adicionados: ${totalItems}`
 
 
     button.addEventListener("click", (event) => {
 
      
-      fetch('http://localhost:3000/stock')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Rede falhou: ' + res.status);
-        }
-        return res.json();
-      })
-      .then(data => {
-
         const itemId = event.target.getAttribute("id");
-        const idcompanie = event.target.getAttribute("idcompanie");
         const idproduct = event.target.getAttribute("idproduct");
         const itemAmount = event.target.getAttribute("amountorder");
-        const itemNumber = event.target.getAttribute("number");
         
-        let item = {iditem: itemId, amountorder: itemAmount, numberorder:itemNumber, idproduct:idproduct }
+        if(itemId){return}else{alert}
+        // if(itemId === null){
+        //   location.reload()
+        // }
+        
+        let item = {iditem: itemId, amountorder: itemAmount, idproduct:idproduct}
+        let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
 
-
-        if(item.iditem === null){
-          setTimeout(() =>  {
-            location.reload()
-          }, 600);
+        let indexToRemove = itemsOrder.findIndex(orderItem => item.iditem === orderItem.id);
+        if (indexToRemove !== -1) {
+          itemsOrder.splice(indexToRemove, 1);
         }
 
-        let findItem = data.find((v) => v.idproduct === Number(item.idproduct) && v.idcompanies === Number(idcompanie))
     
-        function addStock(){
+    setTimeout(() => {     
 
-        let addStockItem = findItem.amount + Number(item.amountorder)
-        findItem.amount = addStockItem
+      fetch('http://localhost:3000/stock')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Rede falhou: ' + res.status);
+          }
+          
+          return res.json();
+        })
+        .then(data => {
+          console.log(item)
+          let findItem = data.find((v) => v.id === item.iditem)
+    
+          function returnStock(){
 
-        }
-       addStock()
+            let returnStockItem = findItem.amount + Number(item.amountorder)
+              // console.log(findItem.amount, item.amountorder)
+              if(returnStockItem < 0){ 
+               alert(`Ação negada, o produto: ${transform.nameitem} ficara negativo em: ${returnStockItem}`)
+               document.getElementById("quantity").value = ''
+              } else {
 
-        setDataStock(findItem)
-        removeItem(item)
+                findItem.amount = returnStockItem
+                  
+                  setDataStock(findItem)
 
+                setTimeout(() => {
+                   location.reload()
+                }, 200);
+              }
+            }
+        returnStock()
+        sessionStorage.setItem("itemsOrderEdit", JSON.stringify(itemsOrder))
+        
       })
 
-        setTimeout(() => {
-         location.reload()
         }, 900);
 
     });

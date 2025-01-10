@@ -26,7 +26,7 @@ function cleanOrder(){
       sessionStorage.removeItem("seq")
      const itemsNewdata = deletDataItem.filter(item => item.idproduct > 0).length;
      const itemsOldData = dataItemsLocal.filter(item => item.idproduct > 0).length;
-        console.log(itemsNewdata)
+        // console.log(itemsNewdata)
         //console.log(itemsNewdata, itemsOldData)
 
   if(lastOrder != 1001 && itemsNewdata < 0){
@@ -34,7 +34,7 @@ function cleanOrder(){
       if(itemsNewdata != itemsOldData){
         
         function setNewItems() {
-            console.log("aqui")
+            // console.log("aqui")
       
           setTimeout(() => {
            
@@ -84,7 +84,7 @@ function cleanOrder(){
      }else {
 
       function setNewItems() {
-        console.log("aqui")
+        //console.log("aqui")
   
       setTimeout(() => {
        

@@ -1,37 +1,32 @@
-
-// import setdata from '../../middlewares/setNewItemOrder.js'
-// import setDataStock from '../../middlewares/setNewStockdb.js';
+import setDataStock from '../../middlewares/setNewStockdb.js';
 
 function addItemList(itemSelected, quantity, numberOrder) {
-
 
   let item = JSON.parse(itemSelected)
 
 
     function start(){
-    
         let transform = {
           "id": item.id,
           "idproduct": item.idproduct,
           "idcompanies": item.idcompanies,
-          // "numberorder": numberOrder,//(numberOrder[numberOrder.length - 1] === 0 || !numberOrder[numberOrder.length - 1]) ? 1001 : (numberOrder[numberOrder.length - 1] || 0) + 1,
           "amountorder": Number(quantity),
           "amountstock": item.amount,
           "nameitem": item.nameitem,
           "unitycost": item.unitycost
         };
 
-    let itemsOrder = sessionStorage.getItem("itemsOrder2")
+    let itemsOrder = sessionStorage.getItem("itemsOrderEdit")
       if(itemsOrder === ''){
         itemsOrder = []
         itemsOrder.push(transform)
-        sessionStorage.setItem("itemsOrder2", JSON.stringify(itemsOrder))
+        sessionStorage.setItem("itemsOrderEdit", JSON.stringify(itemsOrder))
       }else {
-        let itemsOrderJson = JSON.parse(sessionStorage.getItem("itemsOrder2"))
+        let itemsOrderJson = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
         itemsOrderJson.push(transform)
-        sessionStorage.setItem("itemsOrder2", JSON.stringify(itemsOrderJson))
+        sessionStorage.setItem("itemsOrderEdit", JSON.stringify(itemsOrderJson))
       }
-
+     // console.log(JSON.parse(itemsOrder))
 
          
       fetch('http://localhost:3000/stock')
@@ -39,6 +34,7 @@ function addItemList(itemSelected, quantity, numberOrder) {
           if (!res.ok) {
             throw new Error('Rede falhou: ' + res.status);
           }
+          
           return res.json();
         })
         .then(data => {
@@ -54,12 +50,11 @@ function addItemList(itemSelected, quantity, numberOrder) {
               } else {
                 findItem.amount = reduceStockItem
 
-                // setDataStock(findItem)
-               
+                setDataStock(findItem)
 
                 setTimeout(() => {
-                  // location.reload()
-                }, 200);
+                   location.reload()
+                }, 500);
               }
             }
         reduceStock()
