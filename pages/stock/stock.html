@@ -14,14 +14,14 @@
 </head>
 
 <body>
-  <div class="screen ">
+  <div class="screen">
     <div class="left_side">
       <div class="sidebar-container">
         <div class="sidebar-logo">
           <img src="../../../images/TaskLogia_logo_redimensionada.png" alt="" srcset="">
         </div>
         <ul>
-          <li class="cool-link"><a href="../homePage/homePage.html">Ordens</a></li>
+          <li class="cool-link"><a href="../homePage/homePage.html">Voltar</a></li>
           <li class="cool-link"><a href="#">Sobre a TaskLogia</a></li>
           <li id="testeabrirmodal" class="cool-link"><a href="#">Contate-nos</a></li>
         </ul>
@@ -32,10 +32,10 @@
 
         
         <h2>ESTOQUE</h2>
-        <div class="form-content">
+        <div class="form-content" >
           <input type="search" class="searchBar" name="searchBar" placeholder="Buscar..." autocomplete="off">
           
-            <table>
+            <table id="content">
              
               <thead>
                 <tr class="title">
@@ -57,9 +57,75 @@
     </div>
   </div>
   </div>
+
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <style>
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 1;
+      transition: opacity 0.5s ease-out; /* Transição suave */
+    }
+
+    .loading-spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db; /* Cor do spinner */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+      margin-top: 22%;
+      margin-left: 20%;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Estilo para o conteúdo da página */
+    #content {
+      display: none; /* Inicialmente oculto */
+      opacity: 0;
+      transition: opacity 0.5s ease-out; /* Transição suave para aparecer */
+    }
+    
+  </style>
+
+ 
+
+  <script>
+    window.onload = function() {
+
+      setTimeout(() => {
+        document.getElementById("loadingOverlay").style.opacity = "0";
+      }, 800);
+      
+      setTimeout(() => {
+        var content = document.getElementById("content");
+        content.style.display = "block";
+        content.style.opacity = "1";
+        document.getElementById("loadingOverlay").style.display = "none";
+      }, 800)
+
+    };
+  </script>
+
+
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 <script type="module" src="./stock.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 
 </html>

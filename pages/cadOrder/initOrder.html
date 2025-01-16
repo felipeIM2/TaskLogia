@@ -76,7 +76,8 @@
           <img src="../../../images/TaskLogia_logo_redimensionada.png" alt="" srcset="">
         </div>
         <ul>
-          <li class="cool-link"><a href="../homePage/homePage.html">Ordens</a></li>
+          <!-- href="../homePage/homePage.html" -->
+          <li class="cool-link"><a  id="returnOrder" >Voltar</a></li>
           <li class="cool-link"><a href="#">Sobre a TaskLogia</a></li>
           <li id="testeabrirmodal" class="cool-link"><a href="#">Contate-nos</a></li>
         </ul>
@@ -219,14 +220,19 @@
 
   <script>
     window.onload = function() {
-      document.getElementById("loadingOverlay").style.opacity = "0";
+
+      setTimeout(() => {
+        document.getElementById("loadingOverlay").style.opacity = "0";
+      }, 1000);
+      
       setTimeout(() => {
         var content = document.getElementById("content");
         content.style.display = "block";
         content.style.opacity = "1";
         document.getElementById("send").style.display = "block";
         document.getElementById("loadingOverlay").style.display = "none";
-      }, 500)
+      }, 1000)
+
     };
   </script>
 </body>

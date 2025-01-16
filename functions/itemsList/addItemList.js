@@ -53,6 +53,7 @@ function addItemList(itemSelected, quantity, numberOrder) {
                 setDataStock(findItem)
 
                 setTimeout(() => {
+
                    location.reload()
                 }, 500);
               }
@@ -61,6 +62,7 @@ function addItemList(itemSelected, quantity, numberOrder) {
       })
   }
       start()
+
 }
 
 export default addItemList;

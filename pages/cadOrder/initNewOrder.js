@@ -315,6 +315,7 @@ function saveFormData() {
   sessionStorage.setItem("textArea", textArea);
 
   let itemSelected = JSON.parse(sessionStorage.getItem("itemSelect"));
+
   const quantity = document.getElementById("quantity").value;
 
   if(itemSelected) {
@@ -357,7 +358,56 @@ function loadFormData() {
 window.addEventListener("load", () => {
   setTimeout(() => {
     loadFormData()
+    sessionStorage.setItem("itemSelect", [])
   }, 500);
 });
 
+
+
+document.getElementById("returnOrder").addEventListener("click", () => {
+  
+  const secretKey = "12345678901";
+
+  let itemsOrderEdit = sessionStorage.getItem("itemsOrderEdit")
+ // console.log(itemsOrderEdit)
+  if(itemsOrderEdit != "" && itemsOrderEdit != null){
+    
+
+    if(itemsOrderEdit.length > 1 && itemsOrderEdit != "[]"){
+     let confirmReturn = confirm("Existem itens na ordem, deseja retornar e devolve-los?")
+      if(confirmReturn === false){
+        return;
+      }
+    }
+    let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
+    let getUser = JSON.parse(sessionStorage.getItem("user"));
+    let itemsStock = localStorage.getItem("stock")
+    let bytesStock = CryptoJS.AES.decrypt(itemsStock, secretKey);
+    let dataItemsStock = JSON.parse(bytesStock.toString(CryptoJS.enc.Utf8));
+  
+    let stockCompanie = dataItemsStock.filter(v => v.idcompanies === getUser.idcompanies)
+      
+  
+    itemsOrder.forEach(value => {
+  
+     let res = stockCompanie.find((v) => v.idproduct === value.idproduct)
+        
+      if(res){
+        res.amount =  (Number(res.amount) + Number(value.amountorder))
+      }
+        
+       setDataStock(res)
+    }) 
+
+     sessionStorage.setItem("itemsOrderEdit", [])
+     
+      setTimeout(() => {
+       location.href="../homePage/homePage.html";
+    }, 200);
+
+  }else {
+     location.href="../homePage/homePage.html";
+  }
+
+})
 

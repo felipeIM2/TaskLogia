@@ -98,11 +98,10 @@ function showItemList(itemsOrderCompanie, list) {
         const idproduct = event.target.getAttribute("idproduct");
         const itemAmount = event.target.getAttribute("amountorder");
         
-        if(itemId){return}else{alert}
-        // if(itemId === null){
-        //   location.reload()
-        // }
-        
+        if(itemId === null){
+          showItemList()
+        }
+
         let item = {iditem: itemId, amountorder: itemAmount, idproduct:idproduct}
         let itemsOrder = JSON.parse(sessionStorage.getItem("itemsOrderEdit"))
 

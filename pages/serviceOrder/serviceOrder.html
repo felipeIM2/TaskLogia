@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskLogia</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="./serviceOrder.css">
+  <link rel="stylesheet" href="../../@media_css/tabela@media.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lexend:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+</head>
+<body id="body">
+  <div class="screen">
+    <div class="leftSide">
+      <div class="container">
+        <div class="menuLogo">
+          <img src="../../images/TaskLogia_logo_redimensionada.png" alt="" srcset="">
+          <div class="nameEmployee">
+           <p id="nameEmployee"></p>
+          </div>
+        </div>
+
+      <div id="leftBar">
+
+        <ul class="leftNavBar">
+<!-- href="../cadOrder/initOrder.html"  -->
+        <li class="menuBar"><a href="../homePage/homePage.html">Dashboard</a></li>   
+        <li class="menuBar"><a href="../serviceOrder/serviceOrder.html">Ordens</a></li>    
+          <div class="cadasterColumn">
+            <label class="menuBar drop-relatorio" for="cadaster"><span>Cadastro</span></label>
+            <input class="menuBar" type="checkbox" id="cadaster">
+            <ul class="slideCadaster">
+              <li class="menuBar"><a id="initOrder">Cadastrar Ordem</a></li>
+              <li class="menuBar"><a href="../cadUser//cadEmployee.html">Cadastrar usuário</a></li>
+              <!-- <li class="menuBar"><a href="#">Erros e Pendencias</a></li> -->
+            </ul>
+          </div>
+
+          <!-- <div class="reportColumn">
+            <label class="menuBar drop-relatorio" for="report"><span>Relatórios</span></label>
+            <input class="menuBar" type="checkbox" id="report">
+            <ul class="slideReport">
+              <li class="menuBar"><a href="#">Relatório de Pedidos</a></li>
+              <li class="menuBar"><a href="#">Relatório de não lembro</a></li>
+            </ul>
+          </div> -->
+
+          <li class="menuBar"><a href="../stock/stock.html">Estoque</a></li>
+          <li class="menuBar"><button id="dataCompanie">Dados empresa</button></li>
+          <li id="testeabrirmodal" class="menuBar"><a href="#">Contate-nos</a></li>
+          <li id="testeabrirmodal" class="menuBar"><button id="exitButton">Sair</button></li>
+
+        </ul>
+
+        
+      </div>
+
+      </div>
+    </div>
+    <div class="rightSide" id="rightSide">
+      <div class="searchArea">
+        <div class="searchContent">
+          <input type="search" class="searchBar" name="searchBar" placeholder="Pesquisar">
+          <a class="searchBtn" href="#">
+            <i class="fa-solid fa-magnifying-glass" id="lupa" style="color: #ffffff;"></i>
+          </a>
+          
+            
+            
+
+          <h1 id="companieName"></h1>
+        </div>
+      </div>
+      <div class="table-container">
+     <div id="content">
+        <table>
+          <thead>
+            <tr>
+              <th>NºPedido</th>
+              <th>Cliente</th>
+              <th>Descrição</th>
+              <th>Valor da Ordem</th>
+              <th>Situação</th>
+              <th> 
+                <div class="dropdownCheck">
+                  <a class="dropdown-btn" id="dropdown">
+                    <img src="../../icons/add_circle_35dp__FILL0_wght400_GRAD0_opsz40.svg" alt="">
+                  </a>
+                  <ul class="dropdown-menu" >
+                    <li>
+                      <label>
+                        <input type="checkbox" id="checkOrderValue" name="check" value="onCheck">
+                        Exibe valor do serviço
+
+                      </label>
+                      
+                    </li>
+                    <li>
+                      <label>
+                        <input type="checkbox" id="checkOrderDelay" alue="onCheck">
+                        Exibe delay do serviço
+
+                      </label>
+                      
+                    </li>
+                    <li>
+                      <label>
+                        <input type="checkbox" id="checkAscNumberOrder">
+                        Organizar acrescente
+
+                      </label>
+                  </ul>
+                </div>
+             </th>
+            </tr>
+          </thead>
+          <tbody id="localTable">
+
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <div class="paginationContainer">
+        <div class="pagination" id="pagination">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <div id="modalCompanieInfo">
+  </div>
+ 
+  <div id="editOrderModal" class="modal">
+    <div class="modal-content">
+      <div id="closeModal" class="close">&times;</div>
+      <h2>Editar Ordem</h2>
+      <form id="editOrderForm">
+        <div>
+          <label for="orderName">Cliente:</label>
+          <input type="text" id="orderName" name="orderName" required  autocomplete="off"/>
+        </div>
+        <div>
+          <label for="orderDetails">Descrição:</label>
+          <textarea id="orderDetails" name="orderDetails" required></textarea>
+        </div>
+        <div>
+          <label for="orderCost">Valor da Ordem:</label>
+          <input autocomplete="off" value="Digite o valor do serviço" placeholder="Valor do serviço" id="orderCost" name="orderCost"  oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"/>
+
+        </div>
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+ </div>
+ 
+  <style>
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+        display: flex;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 1;
+        transition: opacity 0.5s ease-out; /* Transição suave */
+    }
+
+    .loading-spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db; /* Cor do spinner */
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        animation: spin 2s linear infinite;
+        margin-top: 20%;
+        margin-left: 15%;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    /* Estilo para o conteúdo da página */
+    #content {
+      display: none; /* Inicialmente oculto */
+      opacity: 0;
+      transition: opacity 0.5s ease-out; /* Transição suave para aparecer */
+    }
+
+</style>
+
+
+
+
+<script>
+  window.onload = function() {
+
+    
+     
+      setTimeout(function() {
+        document.getElementById("loadingOverlay").style.opacity = "0";
+          document.getElementById("loadingOverlay").style.display = "none";  // Remover o overlay
+      }, 800);  // Tempo suficiente para a animação desaparecer (500ms)
+
+      // Tornar o conteúdo visível com transição suave de opacidade
+      var content = document.getElementById("content");
+      content.style.display = "block";  // Tornar o conteúdo visível
+      setTimeout(() => {
+          content.style.opacity = "1";  // Aplique a transição de opacidade
+      }, 800);  // Espera 500ms para a sobreposição desaparecer antes de aplicar a transição do conteúdo
+  };
+</script>
+
+  <script type="module" src="./serviceOrder.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</body>
+</html>

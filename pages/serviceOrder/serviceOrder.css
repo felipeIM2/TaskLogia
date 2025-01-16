@@ -1,0 +1,690 @@
+html {
+    background-color: rgb(52, 52, 64);
+    font-family: "Rubik", sans-serif;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+  
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma;
+    letter-spacing: 0.5px;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  :root {
+    --default-color: #343440;
+    --selection-color: #2F2F39;
+    --selection-color-2: #1b1b20;
+    --neutral-color: #f6f6f9;
+    --neutral-color-2: #eaeaeb;
+    --ciano-color: #55EBFF;
+  }
+  
+  ::-webkit-scrollbar {
+    display: block;
+    width: .8rem;
+    background-color: var(--color-neutral-40);
+    /* border-radius: 1rem; */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-color-purple);
+    border-radius: 1rem;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .screen {
+    background-color: aquamarine;
+    display: flex;
+    height: 102vh;
+    /*ajusta a página sem associar com a resolção do monitor*/
+  }
+  
+  .leftSide {
+    background-color: cadetblue;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menuLogo {
+    background-color: hidden;
+    width: 100%;
+    /*height: 100px;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /*  border-bottom: groove 2px var(--selection-color-2); */
+  }
+  
+  .menuLogo img {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  
+  /*---------------------------------------------*/
+  .container {
+    width: 300px;
+    height: 100%;
+    background-color: var(--default-color);
+    color: #fff;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    border-right: groove 2px var(--selection-color-2);
+    /* box-shadow: 10px 0 7px 0px #00000063; */
+  }
+  
+  .container ul {
+    list-style: none;
+    padding: 0;
+    /*  margin: 5px 0; */
+  }
+  
+  .container a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    transition: .5s ease;
+    border-bottom: groove 1px var(--selection-color-2);
+  }
+  
+  .container button {
+    border: none;
+    color: white;
+    background-color: #343440;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    transition: .5s ease;
+    border-bottom: groove 1px var(--selection-color-2);
+    width: 100%;
+    text-align:left;
+  }
+  
+  .container button:hover {
+    background-color: var(--selection-color-2);
+  }
+  
+  .container a:hover {
+    background-color: var(--selection-color-2);
+  }
+  
+  /* Estilos do dropdown */
+  .dropdownContent {
+    
+    display: none;
+    background-color: var(--selection-color);
+    padding-left: 20px;
+    animation: ease-in-out;
+    transition: .8s ease;
+    font-family: "Rubik", sans-serif;
+  }
+  
+  
+  
+  /* .drop-relatorio {
+    width: 100%;
+  } */
+  
+  
+  
+  .reportColumn {
+    background-color: var(--default-color);
+    color: #fff;
+    text-decoration: none;
+    /*width: 100%;*/
+    transition: .5s ease;
+    border-bottom: groove 1px var(--selection-color-2);
+    /*height: 50px;*/
+  }
+  
+  
+  .reportColumn label {
+    height: 48px;
+  }
+  
+  
+  .cadasterColumn {
+    background-color: var(--default-color);
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    transition: .5s ease;
+    border-bottom: groove 1px var(--selection-color-2);
+    /*height: 50px;*/
+  }
+  
+  .cadasterColumn label {
+    height: 48px;
+  }
+  
+  span {
+    padding: 15px 20px;
+    background: var(--default-color);
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    display: block;
+  }
+  
+  span::after {
+    margin-left: 15px;
+    right: 10%;
+    content: "\2630";
+    font-size: 14px;
+   
+  }
+  
+  .slideReport {
+    clear: both;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+  }
+  
+  .slideReport li {
+    padding: 15px;
+  }
+  
+  #report {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+  }
+  
+  #report:checked+.slideReport {
+    height: 280px;
+    
+  }
+  
+  .slideCadaster {
+    clear: both;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height 0.4s ease, max-height 0.4s ease;
+  }
+  
+  .slideCadaster li {
+    padding: 15px;
+    width: 268px;
+  }
+  
+  
+  #cadaster {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+  }
+  
+  
+  #cadaster:checked + .slideCadaster {
+    height: 200px; 
+  }
+  
+  
+  .menuBar {
+    padding: 0;
+    width: 100%;
+  }
+  
+  .menuBar::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: var(--ciano-color);
+    transition: width .4s;
+  }
+  
+  .menuBar:hover::after {
+    width: 100%;
+    transition: width .4s;
+  }
+  
+  
+  #closeModalInfoCompanie {
+    color: black;
+  }
+  
+  
+  /*----------------------------------------*/
+  
+  
+  
+  .rightSide {
+    background-color: var(--default-color);
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  
+  .searchArea {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 40px;
+    background-color: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border-top: groove 2px black; */
+  }
+  
+  .searchArea h1 {
+    margin-left: 22%;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Rubik", sans-serif;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 26%, rgba(4,200,185,1) 20%, rgba(4,193,231,1) 65%);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    color: transparent; /
+  }
+  
+  .searchContent {
+    background-color: hidden;
+    margin-top: 80px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .searchBar {
+    background: var(--selection-color-2);
+    height: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    padding: 10px;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 10px 30px;
+  
+  }
+  
+  .searchBtn {
+    background-color: var(--selection-color-2);
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  i {
+    padding: 10px;
+    animation: ease-in-out;
+    transition: .4s;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    text-decoration: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .searchBtn :hover {
+    background-color: var(--selection-color);
+    width: 40px;
+    height: 35px;
+    /* border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .4s ease;
+  }
+  
+  
+  /****************************************************************************** TABELA /
+  
+    /* Estilos da tabela */
+  .table-container {
+    background-color: hidden;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  table {
+    background-color: #f6f6f9;
+    border-collapse: collapse;
+    height: fit-content;
+    width: 90%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  th,
+  td {
+    border: none;
+    /* border: 1px solid #ccc; */
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .line {
+    background-color: #dcdce4;
+    height: 10px;
+  }
+  
+  /* .compIcon {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  
+  } */
+  
+  
+  
+  /****************************************************************/
+  /* Estilo do ícone */
+  .icon {
+    display: flex;
+    width: 40px;
+    position: relative;
+    cursor: pointer;
+    margin-left: auto;
+    justify-content: center;
+    
+    
+  }
+  
+  /* Estilo do ícone (ícone em si) */
+  .icon::before {
+    content: "\2630";
+    /* Código Unicode para um ícone de menu (☰) */
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Estilo do dropdown (inicialmente oculto) */
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: none;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: auto;
+    /* Remove o posicionamento à direita */
+    top: 35px;
+    left: -160px;
+    /* Posiciona à esquerda */
+  }
+  
+  /* Estilo dos itens do dropdown */
+  .dropdownContent a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Mudar a cor dos itens do dropdown quando o mouse passar por cima */
+  .dropdownContent a:hover {
+    background-color: #f2f2f2;
+  }
+  
+  /* Exibir o dropdown quando o ícone for clicado */
+  .icon:hover .dropdownContent {
+    display: block;
+    font-weight: 600;
+  }
+  
+  
+  /*******************************************PAGINAÇÃO**/
+  
+  
+  .paginationContainer {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; 
+  }
+  
+  
+  .pagination {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  .pagination a {
+    color: white;
+    float: left;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 4px;
+    background-color: #333;
+    transition: 0.4s ease; 
+  }
+  
+  .pagination a.active {
+    background-color: #dcdce4;  
+    color: black;  
+    font-weight: 600;
+    border: 1px solid #bbb;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #555; 
+    color: #fff;
+    border-radius: 5px;
+    transition: 0.4s ease; 
+  }
+  
+  
+  .pagination a.prev, .pagination a.next {
+    background-color: #333; 
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .pagination a.last-page, .pagination a.first-page {
+    background-color: #333; 
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .pagination a.prev:hover, .pagination a.next:hover {
+    background-color: #555;
+    color: white;
+  }
+  
+  
+  .pagination a.disabled {
+    background-color: #ddd;
+    color: #aaa;
+    pointer-events: none;  
+  }
+  
+  /* ------------------------------------------------------------------------------------------------- */
+  
+  /* Estilos para o modal */
+  .modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Fica fixado na tela, mesmo quando rolar */
+    z-index: 1; /* Fica acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite rolar se o conteúdo for maior que a tela */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escurecido com 40% de opacidade */
+  }
+  
+  
+  .modal-content {
+    background-color: #fefefe; /* Cor de fundo branca para o conteúdo */
+    margin: 9% auto; /* Centraliza verticalmente e dá um espaço de 15% da tela */
+    padding: 20px;
+    border: 1px solid #888; /* Borda cinza clara */
+    width: 80%;
+    max-width: 500px; /* Largura máxima de 500px */
+    align-items: center; /* Alinha o conteúdo ao centro */
+  }
+  
+  #orderName, #orderCost, #orderDetails {
+    text-align: center;
+    width: 300px;
+    height: 40px;
+    padding: 8px;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-content div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  
+  .modal button:hover {
+    background-color: #45a049; /* Cor mais escura no hover */
+  }
+  
+  .nameEmployee {
+    height: 30px;
+  }
+  
+  
+  
+  
+  
+  /* Estilos para o container do dropdown */
+  .dropdownCheck {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Estilos para o botão do dropdown */
+  .dropdown-btn {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+  
+    text-align: center;  /* Garantindo que o texto fique centralizado */
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    color: black; /* Cor do texto no botão */
+  }
+  
+  
+  /* Estilos para o menu suspenso (inicialmente oculto) */
+  .dropdown-menu {
+    display: none; /* Menu está oculto inicialmente */
+    position: absolute;
+    background-color: white;
+    width: 265px;
+    height: auto; /* Tamanho automático para o conteúdo */
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    left: -200px;
+    gap: 20px;
+    z-index: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar o menu */
+  }
+  
+  /* Estilo do menu quando a classe 'dropdown-menuON' for adicionada (exibe o menu) */
+  .dropdownCheck > .dropdown-menuON {
+    display: block; /* Exibe o menu quando a classe 'dropdown-menuON' é aplicada */
+  }
+  
+  /* Estilos para os itens do menu */
+  .dropdown-menuON label {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Espaçamento entre os itens */
+    
+  }
+  
+  /* Estilo para os checkboxes dentro do menu */
+  .dropdown-menuON input {
+    margin-right: 10px; /* Ajusta o espaço entre o checkbox e o texto */
+  }
+  
+  #leftBar {
+    height: 450px; /* altura fixa */
+    overflow-y: auto; /* scroll vertical */
+  }
+  
+  

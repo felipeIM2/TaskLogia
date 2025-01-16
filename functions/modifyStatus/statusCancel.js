@@ -26,7 +26,10 @@ function statusCancel(newWords, getUser){
 
 
    setData(transform)
-   location.reload()
+  
+   setTimeout(() => {
+    location.reload()
+  }, 500);
 
   }else if(newOrderStatus.idstatus === 2){
     alert("Sua ordem ainda está em processamento, favor encerrar!")

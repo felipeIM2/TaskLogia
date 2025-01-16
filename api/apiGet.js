@@ -109,10 +109,10 @@ function apiGet(nameCompanie, showDataCompanie, loadPage, nameEmployee) {
     (async () => {
       await loadAndStoreOrderData();       
       await loadAndStoreSessionOrderData();
-      await loadAndStoreItemsOrderData();   // Carregar e armazenar os dados do itemsOrder no sessionStorage
+      await loadAndStoreItemsOrderData();  
       await loadAndProcessCompanies();      
-      await loadAndStoreStockData(); // Carregar e armazenar os dados de estoque
-      await nameEmployee(getUser);
+      await loadAndStoreStockData(); 
+      // await nameEmployee(getUser);
                 
       // Atrasar a execução da função loadPage em 1 segundo
       setTimeout(() => {

@@ -26,7 +26,10 @@ function statusClose(newWords, getUser,  sessionOrder){
         
             
       setData(transform1)
-       location.reload()
+      setTimeout(() => {
+        location.reload()
+      }, 500);
+      
     }
     }else if (newOrderStatus.idstatus === 2) {
    
@@ -42,7 +45,10 @@ function statusClose(newWords, getUser,  sessionOrder){
     };
 
     setData(transform)
+
+    setTimeout(() => {
       location.reload()
+    }, 500);
 
     } else {
     alert("Sua ordem já está finalizada. Não é possível encerrar novamente.");

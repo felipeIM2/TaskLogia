@@ -25,7 +25,11 @@ function statusInit(newWords, getUser){
 
     // console.log(transform)
     setData(transform)
-    location.reload()
+
+    setTimeout(() => {
+      location.reload()
+    }, 500);
+    
 
   }else if(newOrderStatus.idstatus === 3){
     alert("Sua ordem ja esta finalizada!")
