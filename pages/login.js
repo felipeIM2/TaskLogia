@@ -37,31 +37,6 @@ const login = document.getElementById("login");
   let orderlocal = localStorage.getItem("order");
   if(orderlocal){localStorage.removeItem("order")};
     
-  const register = document.getElementById("register");
-  register.addEventListener("click", () => { 
-    let modalRegister = document.getElementById("modalRegister");
-      if(modalRegister.classList.contains('modalRegisterOff')) {
-        
-        modalRegister.classList.remove("modalRegisterOff");
-        modalRegister.classList.add("modalRegisterOn");
-      }
-  })
-
-  const cancelRegister = document.getElementById("cancelRegister");
-  cancelRegister.addEventListener("click", () => {
-    let modalRegister = document.getElementById("modalRegister");
-    if(modalRegister.classList.contains('modalRegisterOn')) {
-      
-      modalRegister.classList.remove("modalRegisterOn");
-      modalRegister.classList.add("modalRegisterOff");
-    }
-  })
-
-  const newEmplo = document.getElementById("newEmplo");
-  newEmplo.addEventListener("click", () => location = '../pages/register/cadEmployee/cadEmployee.html')
-
-  const newAdmin = document.getElementById("newAdmin");
-  newAdmin.addEventListener("click", () => location = '../pages/register/cadEmployee/cadAdmin/cadAdmin.html')
   }
 }
 

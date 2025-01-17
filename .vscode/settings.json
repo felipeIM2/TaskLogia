@@ -1,4 +1,8 @@
 {
   "liveServer.settings.port": 5501,
-  "CodeGPT.apiKey": "CodeGPT Plus Beta"
+  "CodeGPT.apiKey": "CodeGPT Plus Beta",
+  "editor.fontVariations": false,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Fira Code', monospace"
+
 }

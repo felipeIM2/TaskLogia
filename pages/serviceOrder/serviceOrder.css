@@ -100,7 +100,7 @@ html {
     color: #fff;
     text-decoration: none;
     display: block;
-    padding: 20px;
+    padding: 16px 20px;
     transition: .5s ease;
     border-bottom: groove 1px var(--selection-color-2);
   }
@@ -176,7 +176,7 @@ html {
   }
   
   span {
-    padding: 15px 20px;
+    padding: 16px 20px;
     background: var(--default-color);
     width: 100%;
     color: white;
@@ -321,7 +321,6 @@ html {
     height: 40px;
     border-bottom-left-radius: 40px;
     border-top-left-radius: 40px;
-    padding: 10px;
     border: none;
     color: white;
     outline: none;
