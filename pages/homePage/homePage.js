@@ -54,3 +54,57 @@ document.getElementById("initOrder").addEventListener("click", () => {
     
     window.location.href = '../login.html'
   });
+
+
+  
+  document.getElementById("profile").addEventListener("click", () => {
+
+     let options = document.querySelector(".optionsProfile")
+     let height = window.getComputedStyle(options)
+      
+     if(height.height === "0px"){
+
+       options.style.display = 'block'
+      
+       options.style.height = '250px';
+      setTimeout(() => {
+        options.style.color = "black"
+      }, 500);
+
+     }else {
+
+      options.style.height = '0px';
+      options.style.display = 'none'
+      
+      setTimeout(() => {
+        options.style.color = 'transparent'
+      }, 500);
+
+     }
+  })
+
+ document.getElementById("exitProfile").addEventListener("click", () => {
+
+    let options = document.querySelector(".optionsProfile")
+    let height = window.getComputedStyle(options)
+    
+    if(height.height === "0px"){
+      
+     
+      options.style.height = '250px';
+
+      setTimeout(() => {
+      options.style.color = "black"
+    }, 200);
+
+    }else {
+
+    options.style.height = '0px';
+    setTimeout(() => {
+      options.style.color = "transparent"
+    }, 500);
+
+    }
+
+ })
+  

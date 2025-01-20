@@ -299,14 +299,50 @@ span::after {
   
 }
 
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .iconProfile {
   width: 60px;
   height: 60px;
-  border: 4px solid rgb(85,235,255);
+  /* border: 6px solid rgb(85, 235, 255); */
   border-radius: 100%;
   margin-left: auto;
   margin-right: auto;
+  position: relative; 
+}
 
+.profileAvatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%); 
+  z-index: 1;
+  cursor: pointer; 
+}
+
+.optionsProfile {
+  display: none;
+  width: 100px;
+  height: 0px;
+  border-radius: 20px;
+  color: transparent;
+  background-color: white;
+  position: absolute;
+  transition: height  .8s ease-in-out;
+  text-align: center;
+  margin-top: 15px;
+  
+}
+
+.optionsProfile p {
+  margin-bottom: 30px;
+  cursor: pointer;
 }
 
 /****************************************************************************** TABELA /
