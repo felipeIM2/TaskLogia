@@ -334,16 +334,17 @@ span::after {
   color: transparent;
   background-color: white;
   position: absolute;
-  transition: height  .8s ease-in-out;
+  transition: height  .4s ease-in-out;
   text-align: center;
   margin-top: 15px;
-  
+  transition: 0.6s;
 }
 
-.optionsProfile p {
+.optionsProfile h6 {
   margin-bottom: 30px;
   cursor: pointer;
 }
+
 
 /****************************************************************************** TABELA /
 

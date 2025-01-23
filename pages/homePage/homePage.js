@@ -61,50 +61,32 @@ document.getElementById("initOrder").addEventListener("click", () => {
 
      let options = document.querySelector(".optionsProfile")
      let height = window.getComputedStyle(options)
+      let h6 = document.querySelectorAll("h6")
+      let totalHeight = h6.length * 50 + "px"
+        
       
      if(height.height === "0px"){
 
        options.style.display = 'block'
       
-       options.style.height = '250px';
-      setTimeout(() => {
+       setTimeout(() => {
+        options.style.height = `${totalHeight}`;
         options.style.color = "black"
-      }, 500);
+      }, 100);
 
      }else {
 
       options.style.height = '0px';
-      options.style.display = 'none'
       
       setTimeout(() => {
+        setTimeout(() => {
+          options.style.display = 'none'
+        }, 400);
         options.style.color = 'transparent'
-      }, 500);
+      }, 100);
 
      }
   })
 
- document.getElementById("exitProfile").addEventListener("click", () => {
 
-    let options = document.querySelector(".optionsProfile")
-    let height = window.getComputedStyle(options)
-    
-    if(height.height === "0px"){
-      
-     
-      options.style.height = '250px';
-
-      setTimeout(() => {
-      options.style.color = "black"
-    }, 200);
-
-    }else {
-
-    options.style.height = '0px';
-    setTimeout(() => {
-      options.style.color = "transparent"
-    }, 500);
-
-    }
-
- })
   
